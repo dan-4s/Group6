@@ -17,5 +17,7 @@ public class Hello {
 		System.out.println("danilo's text");
 	}
 
-	public void methodC(void) { }
+	public void methodC(void) { 
+		System.out.println("Chance's text");
+	}
 }
