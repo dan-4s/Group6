@@ -13,7 +13,9 @@ public class Hello {
 	system.out.println("Jacob's Text") 
 	}
 
-	public void methodB(void) { }
+	public void methodB(void) { 
+		System.out.println("danilo's text");
+	}
 
 	public void methodC(void) { }
 }
