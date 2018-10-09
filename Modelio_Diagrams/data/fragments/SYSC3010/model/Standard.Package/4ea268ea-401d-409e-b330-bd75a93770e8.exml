@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="sysc3010" version="4">
+  <OBJECT>
+    <ID name="sysc3010" mc="Standard.Package" uid="4ea268ea-401d-409e-b330-bd75a93770e8"/>
+    <PID name="SYSC3010" mc="Standard.Project" uid="ee029470-317f-4341-9ba3-694d3787ac72"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[sysc3010]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Interaction" mc="Standard.Interaction" uid="6d859988-8850-42d9-abf5-15d9ad5d063a"/>
+      </COMP>
+      <COMP relation="Declared">
+        <OBJECT>
+          <ID name="Greenhouse Monitoring App" mc="Standard.Instance" uid="96696cec-7a1d-4786-bee3-432671923cb5"/>
+          <ATTRIBUTES>
+            <ATT name="IsConstant">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="Name"><![CDATA[Greenhouse Monitoring App]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Infrastructure.Note" uid="ac203118-a2a9-4a71-a543-9291e098ce97"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[<Enter note text here>]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Firebase Database" mc="Standard.Instance" uid="4c5e71d4-7caf-4f72-b879-fea229dc7d67"/>
+          <ATTRIBUTES>
+            <ATT name="IsConstant">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="Name"><![CDATA[Firebase Database]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Greenhouse Monitoring Website" mc="Standard.Instance" uid="eacf8996-87b1-41cd-bad9-16969427c826"/>
+          <ATTRIBUTES>
+            <ATT name="IsConstant">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="Name"><![CDATA[Greenhouse Monitoring Website]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="DataReceiveTransmit" mc="Standard.Instance" uid="6d09ab27-377a-4801-9c6a-7353df34fbab"/>
+          <ATTRIBUTES>
+            <ATT name="IsConstant">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="Name"><![CDATA[DataReceiveTransmit]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="CommandReceiveExecute" mc="Standard.Instance" uid="85cb20f8-255d-49e4-906e-65da59b7bf5e"/>
+          <ATTRIBUTES>
+            <ATT name="IsConstant">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="Name"><![CDATA[CommandReceiveExecute]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="SensorDataCollectTransmit" mc="Standard.Instance" uid="b86aaee2-652d-470c-9bde-e96b7832b22c"/>
+          <ATTRIBUTES>
+            <ATT name="IsConstant">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="Name"><![CDATA[SensorDataCollectTransmit]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="GreenhouseManagement" mc="Standard.Instance" uid="feb1e8da-a948-4bc5-a727-56a83e26a05a"/>
+          <ATTRIBUTES>
+            <ATT name="IsConstant">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="Name"><![CDATA[GreenhouseManagement]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="Arduino: Sensor Module" mc="Standard.Node" uid="a8ca0d02-a2b7-469d-8a7d-5bc3ff6faec6"/>
+        <COMPID name="Raspberry Pi 2: Server Pi" mc="Standard.Node" uid="981377d1-a821-468b-bdac-56f00ee53fae"/>
+        <COMPID name="Raspberry Pi 1: Greenhouse Pi" mc="Standard.Node" uid="b1e3485a-59d6-407a-bd1f-2df77cc292d2"/>
+        <COMPID name="Android Phone" mc="Standard.Node" uid="e2081445-b4fc-4e38-8e31-6ff9658fed08"/>
+        <COMPID name="DHT11" mc="Standard.Node" uid="a4d3e607-15d3-441b-8f2e-47a4508c09ff"/>
+        <COMPID name="Cooling Fan" mc="Standard.Node" uid="bfc3a167-53c2-4813-9582-30045dfd2f9f"/>
+        <COMPID name="LCD Display" mc="Standard.Node" uid="ccb95daa-c0ee-444f-8ef4-62823f97e8e9"/>
+        <COMPID name="&lt;&lt;thread&gt;&gt; DataReceiveTransmit" mc="Standard.Class" uid="2f63d782-5167-49a8-ad69-7874a16f53d8"/>
+        <COMPID name="&lt;&lt;thread&gt;&gt; CommandReceiveExecute" mc="Standard.Class" uid="c119a7a3-ccce-4053-8514-8ded40908c65"/>
+        <COMPID name="&lt;&lt;interface&gt;&gt; Runnable" mc="Standard.Class" uid="3d5c1f2a-bb41-432c-8abe-dbfee6396136"/>
+        <COMPID name="GreenhouseData" mc="Standard.Class" uid="fea75aad-2c88-4c75-b418-6a0352401078"/>
+        <COMPID name="Google Server" mc="Standard.Node" uid="6d130bc3-5927-4048-aa18-7a7e4b24f57f"/>
+        <COMPID name="General Purpose Computer" mc="Standard.Node" uid="2a6deaba-f5aa-42f0-84c7-6fd50b1f3073"/>
+        <COMPID name="Gertboard" mc="Standard.Node" uid="e02eacec-a239-4ee9-bac0-d5ab969dce10"/>
+        <COMPID name="GreenhouseManagement" mc="Standard.Class" uid="81abd3f6-39ea-414f-acdb-31f36d81ef5f"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="sysc3010 Deployment diagram" mc="Standard.DeploymentDiagram" uid="67ca1175-27ac-4213-8c39-3e9ef27080e7"/>
+        <COMPID name="GreenhousePi" mc="Standard.ClassDiagram" uid="259632f4-7fef-4a50-8206-fb8d855a59d4"/>
+        <COMPID name="ServerPi" mc="Standard.ClassDiagram" uid="fcd0d576-10d5-49ef-9ccd-f810f89a82d8"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

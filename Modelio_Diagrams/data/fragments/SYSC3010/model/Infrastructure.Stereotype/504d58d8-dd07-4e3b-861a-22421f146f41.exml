@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="guarded" version="4">
+  <OBJECT>
+    <ID name="guarded" mc="Infrastructure.Stereotype" uid="504d58d8-dd07-4e3b-861a-22421f146f41"/>
+    <PID name="LocalProfile" mc="Infrastructure.Profile" uid="cef33239-472c-4907-8b6f-6d2f4682ba0f"/>
+    <ATTRIBUTES>
+      <ATT name="Image"></ATT>
+      <ATT name="Icon"></ATT>
+      <ATT name="IsHidden">false</ATT>
+      <ATT name="LabelKey"><![CDATA[guarded]]></ATT>
+      <ATT name="BaseClassName"><![CDATA[Infrastructure.ModelElement]]></ATT>
+      <ATT name="Name"><![CDATA[guarded]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

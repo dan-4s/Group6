@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="SYSC3010" version="4">
+  <OBJECT>
+    <ID name="SYSC3010" mc="Standard.Project" uid="ee029470-317f-4341-9ba3-694d3787ac72"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[SYSC3010]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="sysc3010" mc="Standard.Package" uid="4ea268ea-401d-409e-b330-bd75a93770e8"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="SYSC3010" mc="Infrastructure.DiagramSet" uid="72a12fde-586b-4f18-87d6-3aaffe5e9e03"/>
+      </COMP>
+      <LINK relation="Extension">
+        <ID name="guarded" mc="Infrastructure.Stereotype" uid="504d58d8-dd07-4e3b-861a-22421f146f41"/>
+      </LINK>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

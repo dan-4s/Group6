@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="GreenhousePi" version="4">
+  <OBJECT>
+    <ID name="GreenhousePi" mc="Standard.ClassDiagram" uid="259632f4-7fef-4a50-8206-fb8d855a59d4"/>
+    <PID name="sysc3010" mc="Standard.Package" uid="4ea268ea-401d-409e-b330-bd75a93770e8"/>
+    <ATTRIBUTES>
+      <ATT name="UiDataVersion">647</ATT>
+      <ATT name="UiData"><![CDATA[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]]></ATT>
+      <ATT name="Name"><![CDATA[GreenhousePi]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <LINK relation="Represented">
+        <ID name="&lt;&lt;thread&gt;&gt; DataReceiveTransmit" mc="Standard.Class" uid="2f63d782-5167-49a8-ad69-7874a16f53d8"/>
+        <ID name="&lt;&lt;thread&gt;&gt; CommandReceiveExecute" mc="Standard.Class" uid="c119a7a3-ccce-4053-8514-8ded40908c65"/>
+        <ID name="&lt;&lt;interface&gt;&gt; Runnable" mc="Standard.Class" uid="3d5c1f2a-bb41-432c-8abe-dbfee6396136"/>
+        <REFOBJ>
+          <ID name="run" mc="Standard.Operation" uid="6f1b20a2-963e-4b8f-9b95-0b48ea1e64b1"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="" mc="Standard.ElementRealization" uid="0bdb6365-c6da-4496-9cfe-7ff9e45099b7"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="" mc="Standard.ElementRealization" uid="f32caac1-98e4-4c7e-a061-86f56c782ac9"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="receiveTransmitPort" mc="Standard.Attribute" uid="ca96c70f-a64d-4e38-b110-ea66e7d2e89c"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="commandReceivePort" mc="Standard.Attribute" uid="9c850c29-09bc-4124-8fbc-cc5446caba40"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="updateServer" mc="Standard.Operation" uid="7266a644-f046-45eb-a3de-b2bdf84c493b"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="turnFanOn" mc="Standard.Operation" uid="199baeb7-ea82-4f80-bfa1-f40ef0c18ee4"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="turnFanOff" mc="Standard.Operation" uid="7d8aba1f-8094-4cee-84e8-7f3e94870950"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="serverPort" mc="Standard.Attribute" uid="8c48268a-8911-4829-bd26-90ae2cdd0168"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="serverIP" mc="Standard.Attribute" uid="25a7b9bb-0e2b-4f71-95bb-553378b5e1a8"/>
+        </REFOBJ>
+        <ID name="GreenhouseData" mc="Standard.Class" uid="fea75aad-2c88-4c75-b418-6a0352401078"/>
+        <REFOBJ>
+          <ID name="temperature" mc="Standard.Attribute" uid="4e59aa46-b408-41ec-be9c-2c2b3f09f340"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="setTemperature" mc="Standard.Operation" uid="f9b64bd7-455f-4cdb-a16d-645a9365fa00"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="relativeHumidity" mc="Standard.Attribute" uid="e0db13ba-4a99-496a-bbe6-1bf7000bdf08"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="fanActive" mc="Standard.Attribute" uid="11ce7e9a-efba-47a2-bcaf-26bec3d7f143"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="getTemperature" mc="Standard.Operation" uid="a58ed9ce-1e41-458d-acb3-6a8002327b8a"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="setHumidity" mc="Standard.Operation" uid="d9d1985d-038e-4dfd-9fe3-780fc565e3b7"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="getHumidity" mc="Standard.Operation" uid="101b0774-b949-4652-bf29-7f71109dd880"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="setFanActive" mc="Standard.Operation" uid="b9241102-75da-4e94-917a-5e07adac249a"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="getFanActive" mc="Standard.Operation" uid="3481d843-cac2-473e-bb4e-ed7c30f85830"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="" mc="Standard.AssociationEnd" uid="1bde73f6-984a-4ac3-bb20-00b4a5334e35"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="greenhouseState" mc="Standard.AssociationEnd" uid="32be10cc-8e13-41b9-b9d4-f3312fb8447b"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="" mc="Standard.AssociationEnd" uid="bdfbc9ac-7067-4f5d-b825-8a1d784d2787"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="greenhouseState" mc="Standard.AssociationEnd" uid="b876b1a0-3e27-42d5-a6af-1d62a7739ffd"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="Note" mc="Infrastructure.Note" uid="1d0ff712-4032-4aeb-8069-063ab4c8e59c"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="getJson" mc="Standard.Operation" uid="61c98983-c84e-4247-9b3c-5861c053bab5"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="sendErrorMessage" mc="Standard.Operation" uid="081bf92f-17ee-49eb-ae3b-bfaba11ba3e3"/>
+        </REFOBJ>
+      </LINK>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="ae8cbd1f-fd05-4a78-a910-a7d2f768c2d3"/>
+          <ATTRIBUTES>
+            <ATT name="Content"></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
