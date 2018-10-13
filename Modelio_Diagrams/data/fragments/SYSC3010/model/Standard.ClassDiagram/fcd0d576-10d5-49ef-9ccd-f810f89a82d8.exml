@@ -4,8 +4,8 @@
     <ID name="ServerPi" mc="Standard.ClassDiagram" uid="fcd0d576-10d5-49ef-9ccd-f810f89a82d8"/>
     <PID name="sysc3010" mc="Standard.Package" uid="4ea268ea-401d-409e-b330-bd75a93770e8"/>
     <ATTRIBUTES>
-      <ATT name="UiDataVersion">154</ATT>
-      <ATT name="UiData"><![CDATA[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]]></ATT>
+      <ATT name="UiDataVersion">431</ATT>
+      <ATT name="UiData"><![CDATA[eJztXV1T4zgW/Sspal+VtizZlpaenqKBYamGhg3MVO2+ULI+wNOJzdrOdDO/fuV8ASE4iuMoTtpPJA6WZfucq3uP7pU+/vpj0O/8JdMsSuJfDmDXOej8+unjVfin5HknEvrQQSd/epS/HCTpfXeQCNmPkq6I2H3KBl0pojxJu1nO8uhbV/blQMZ5Nv7Op/90NrgZfT8Zfz/oDNifSXo3u6hz8OnjdZo8yjR/6sRsoK/VZ0/JMD9hOdO//cH6QznpRDzs9w8+fPr4YXrCm1Nv8qe+PHh1C27ZLWTF/2ddnqSyOz7XoH/HLONMSDG92OmPvCeV4VW+6iYmZ3bkj/wkPNd9HH0sPlyOz+yg7o+5G/0wvqWym09ln+VS6L7MPbfL4lDnr+JI8YhYLFgqusd9lmWT19JRXDjCC3wA9R+AqVSAci6AItBRhDLiClL+6HVr+Zc4+R5fsFD253pwk6dRfH/w6Uam+sleRx8/jH4tvZukL8/j42TwmGRRrt/FO00aNHX8EPVFKosWLqIsfwUPVAHhvM/+/lsje/QE10J0T3eDxfcFGCavBzrOIcTOoefCQ9eBK8MdbxzuBdbHxCrt2/HF0c3NXe/0und6c3d5dXI6d+un8XDwT6NOfpFP/+jJx1Rm+umzAgoFTZ4Bfdv7/fj2997piUmHrq7vznpXv1//cX5z/vlivlOfE406Fs/aztOhNGn16PZ2zWY3xO8OgSwUSPkAUckAhlgBxkUIEFTIFwRK5akaiH2WShk/JMNMXrKY3Y+I0hySe+uS/DqNBix9+jrCXa18dw6rc9035bpu6sfT2oTHLWRXgOwli+ICL2tCN6gA3aLV7JFx+SD1e0w1iL9Oj/xrdMS+F0bsQtVvoboCVMegMGgwe0i+30X8TUPz45ti/WzJuDlq6pt8+p6koobWcsa/3WW5TGWy9pA+6lp/wetYvSkWZnnKeF7hDmeQfcEiWm0cy7JIRSM7cDz70pNZ9DcL+/IsTYaP9g0CdFqL0FyLsOagBavoBizXFw+HubwvEKnBejQ9sD5Ez2PdbDHuTV6aNw8HA8AaCwn1AFYTpEWsOWJfg2Vd/FZRBWb4fQndWlELVg8RoLEeUBNq51WB+lE7e7YdT3iOC0MOJCcQYBdBwCiEwEcoDKDkOKS0BuQK/Wauk9Syfd0HX8u0bxWdrUUuEqwS6zeTupbDe6vURQzSgAcIMKX5i5UXAEogBQQSlyHOVUDnx78q1L2fDTrn1y19d4G+VfSOZtLXsuRhlb6hh8OQKQ+Q0HM0fQkGoYs94HKfcupgib15tbAKfXkyGOhrt4Nvk9n7Yew+LyN2Fe2iaHA04TMNCa+mB+oPCYMl81mLppYtaxhtSLiaAi/zh0TUEQ+6VfSMGXhf4nYL+Q+WdQt38yCdPc2O4NTDAdEepOeEAEvtUBIhERAwIH4oGaVeUANQtc3V/9KX4t5kOqcdhywK7ovGGreKfNMUuloWbKzSlWAYQh85wCWcAOwTB4TQYSCA2PMx8bVX6dVA1+Gj0P0r3kjIspaxu8DYKqpNUxhrWaexy1jKJYaIAEqEAphzCRjWA6zrEOxIEhKKl0ylGDE2k7E4Hgd7LV13gK5VVJqm0NWyLmOVrkGIEeKQAhZ62imGCALCmQegKvoGpReSsAa6PuoH/1uaDNohtuGcNdNm3CraTBTr+4z1Q9HX5/kwLcTX88mxm+kx+/RGrSbTZE1mipB1s/arCDJGiN1SOhSyrNKgPYNtjRCtLBiaGVtURZwwgu5/k3gbBteyYLFvyN2wwS1AUTOYDXFeJaSP4limo4zVEcD1l/VrrN7k/i1JLFiEcdupGC3GV3MqYqP09VKPokpI+w5ct+VDWI5sUZtT3SS/oloQtxDAMtuOL4EtB28tghvsS7z9ae46UfaH/hZxVq9CMneVtxWg3QnUlvgZyEBIxZXi2IF+tUXnRhV9I4moYG9x9Ks+elMcHaOkTrdpST7XIjZbjmnb+tRVyHyjb7zfj3ITRu+D4tqsdDhcRQWQ8XDwPIdSLKBQczF64HqHvnNYrEFBKyw9sb21J+qn+unzs+7ggPlUcAVE6PoAY8cDoRdioCQPJYJO4JA6JkEvZZZpnt/qg80p5cNVwvi3QN3sAgpVAWt7AYXNj1B7A9ualk/Ae7J+ArYc27/J6miham/5BMPJ4f2bt55rqubVE/AeLZ/gWVZKWntgb7GqKppA4XEVwVzK+hOP6yLKR1/rr5Txl6wEuAiulqWAN3M8LVzfhesroKyL3aph7WLsbruG07M8t+1ZjWsvxs+8g4JQuQ73gJDE0+gNESAeFADRkDsBUZCxOvSso+MvbZ5gU1Wrl6CvGvE3lMOWg/ztcNjnXAmfBMDnkgKMvBAQFTKgXE+qUEFEVB2VNcdXl5dHX09aHu8Cj6tIHw3msWUFZDs8dn3PhQ7CgLhYe5IhLeptQgf4CrrIwcpV/pI6dSMenxzdHrUk3gUSV9Esmkti37JssaXBWHAqVABBIFyuHWolQch5ADzKOCe+VBiKGkh82utd9VoWN5XFZhPBftOWyqwkR/qtvtNYfWf9lTENkbzWqgsbWOGnGpJtSz4tkm0t6GMI46bULVSDr221o4Wv1TIFf/fLFHzbe0G0U5dNqVHw96BGIbC9cUEL37ZAoewqbxIsa6xPCMqj01mSTDIYJHF3XIow+q/JT5qxJ1KxYT8f7Wx4Oj7ahOKEwHZxQpv7ae4oFaUso8u2ktSGJamFtsTQgMzLvwsNSNP21yxKHFzHOURukTa+ZE50kd1oN9gs79DaG2xuqmwLUuQJV3pAeMoDmIQSsNDxgeRQQEk9j5I6thw4TiUrtLZZ8dbYRDYnvzBo+G6YlZlpWfoIbNUb7g1w69oSc09qOgLLQkhgq9p9bwDbboxZmw8615RhaYdhlkSwR5UdxLK+1FoFy/4X2YsZf2JZP3mDjRamDZn3J02b969hZx9iOQugRbflXICX73qH9x4glmNesvmYd/Y0O1h5PvIFBcQNFMAhRoCGPAQcO9RjwnUY53XUJbWb+zQ1aFg43Ozw3gPEcsRvla6+q1zXhwQo4euhRQgBqCupHlr0HyylI9WSwmGzoaXdJmRnqLrWno/bpSq1HIZbpSrHPqaEKUACiAFGkgPmMR+gQCnkewoFb1bGrELV4l20PG0+T+kOb29JbesQNnnqUCRdqiRwvcDVPKXFSpMhA0ghV4RIR2vBEqiYFRKlaWKicrdEbe4ePnRj20psgdOt+tJw9aWmbXxotVqL5m7jQy3rMXTPchB2J5WdVivEaOw2PtSyNLFvyN28zd3aTj60xqqNWid23myTsxzm0LEd17e+xcq+xfplctCptkFgk+rkoGM5tC240WK1SU4GdKpFdY0qmIOO5XCuxXHDfYvGFM5tcGefIoO9AnV3ZGsf6LTJ9g2ndLu/j3U5dqnFuYjib9lif7WKnKDxmvBoOglz9PxtZevwqiulSsCLml9N7r6+IX3pa5Y/mFzzJhmmXB7F/CFJ569aHmS+vSobtVK4OD32dNOPRJGzPWnaoCsiUkqjKuZyDgsnkb7SaBCYosFF3mEF83Mis3zhrcLSEHSrt0oOvQrp4MXrnwDpPbdg7oyehp5Mv0TxvI1YrWjxONHeLS8QP27wXMzu5Kp3+6+rs6uvRxdLbMIIkj32bf7hLPd1c5bey9zsVIOnuGiYhaVh7EarTesfYF8YqA4WkJGAKBAIGQIsJQYsYA5wuCCBw3noSmpHTx7bpPnnXhp6v6bo6NeCm3LKMoO3MMbOybhBc/dkckJHceEIL/AB1H8AplIByrkAikBHEcqIK5bkWo07MFmQYQX/aP3ND8dXPkvZ40PEx6Lg4pdXQ3nqovdvaLrnEVEeif/EiFjfY94BRMgf+XioLLp2yR7nwFGqcLwr06gkHYzMoeon36eFEOf68G/6+9ZkR1gauG5AroHvLiSxiaHnNBYdFiAa+JoioeNAgN1ixwsBBQhchhDRsIW1rI5SYzQ3dlPuCswUYLm737DwCEvj+wU+6jNBNIZ/K0o79WfWf/bQLhLOcjOHVU1On3dXk2H4cq2ArrtkkYDhEt1jiVn6a8npYNn8U03VrRBWCQ4LZHGN/Ui/hUhTbqIl9fTh4+fD64tJFY2M8XTzLtqXEHGqiPaPSOhoJ4kW9gW5bLSoP6YB5xxb8m5N7ct4CL4rAFM6Qr56h6uG7K9sxLNl0E/sMYlWMRDfI5E/LGFnsJ5tWGJaltmGJafLN4FvVdvglosJKwpH2zIHrnGcu5M+R4PCXVODMGBRPNZKW/14U3n30F1BZtial7VlJ8u15GS5VabaXxvSwrcqpum2ZkVtT7S3npWxZ/UzmVL7FUzQLZ9t36AvumFHEtjzJMtD/hID+L+hjiUnCyn9e/p5W/KVWxos74UR3Fn5agaUmpWrRah5hYnyKe2V9dnJ4UKmPUrT5Ps2YF4afLcwb4RKywpwGOspaNW8gJ9Qc10zGFjk5yx+F5UWaWtUNIBsp4+3FsLYQrTRwEajAbTCZP1PFg2YW8Aqc9rNCwfQ/s9m76wmsq1wAFWJdJuaroH2P97dWYBbS9dAq+ZsbyN0CH6SdA1UpV662eka2Lhqehfty86GESula2DTvdzadI0NutW4fMp3F6VIXBpttR5IIzyQ1aRIXB78tf7E8tPX8SY+jDLM32/7bFBUEhpWKy9Z/T6dbvymyZH050uZLLHjVRJaxfsyL8P8fH+Ssu+aJhfsSc5X52GzmWQxbiHr9os2in1OXzZpxwivdlaVcuj6qkui+RF0tkjsWffi6D+nvbvPR8dfip0Dv57UvRLBu628fGeL63KxWR58i4a60XB7dW1tQYr/A21rmYo=]]></ATT>
       <ATT name="Name"><![CDATA[ServerPi]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
@@ -19,19 +19,53 @@
           <ID name="updateDatabase" mc="Standard.Operation" uid="841b1630-28c8-4680-b10a-7145648654b5"/>
         </REFOBJ>
         <REFOBJ>
-          <ID name="greenhousePortData" mc="Standard.Attribute" uid="5d5021bc-ec81-4231-a911-633b71ec4b99"/>
+          <ID name="dataPort" mc="Standard.Attribute" uid="5d5021bc-ec81-4231-a911-633b71ec4b99"/>
         </REFOBJ>
         <REFOBJ>
           <ID name="greenhouseIP" mc="Standard.Attribute" uid="3a197c73-afbc-4f57-9819-8182a3ccf790"/>
         </REFOBJ>
         <REFOBJ>
-          <ID name="greenhousePortCommand" mc="Standard.Attribute" uid="b54bbaf5-8b50-4f84-b245-2c69c904e454"/>
+          <ID name="commandPort" mc="Standard.Attribute" uid="b54bbaf5-8b50-4f84-b245-2c69c904e454"/>
         </REFOBJ>
         <REFOBJ>
           <ID name="sendCommand" mc="Standard.Operation" uid="89ce4138-98df-4cce-a4e3-20840e8b8946"/>
         </REFOBJ>
         <REFOBJ>
           <ID name="pullFromDatabase" mc="Standard.Operation" uid="7b433c19-ab5c-4131-8ca5-1fcade1e5b8b"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="ACK" mc="Standard.EnumerationLiteral" uid="37bf20c5-de85-44b3-851d-39bc078f1aaf"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="MessageType" mc="Standard.Enumeration" uid="47a69dcf-db26-4405-b5b4-fecbe3107086"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="ERROR" mc="Standard.EnumerationLiteral" uid="6dc9df71-7d2c-44fe-bcc7-59acc86ef41d"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="COMMAND" mc="Standard.EnumerationLiteral" uid="6ccfd687-6ce9-435b-8fba-f25efbf138f5"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="DATA" mc="Standard.EnumerationLiteral" uid="26521034-8246-4b9e-a4b0-6f12304f2f62"/>
+        </REFOBJ>
+        <ID name="CreateGreenhouseMessage" mc="Standard.Class" uid="1935d2e5-d5f5-48be-ab06-ec1d1e955980"/>
+        <REFOBJ>
+          <ID name="Error" mc="Standard.Operation" uid="093e29fe-2572-439f-acba-3f32db35597e"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="Command" mc="Standard.Operation" uid="62f22618-fd65-4ddd-92e9-ec92e4ee0ef8"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="Data" mc="Standard.Operation" uid="c46498af-8714-43ec-a5a6-37ff365f3736"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="Acknowledge" mc="Standard.Operation" uid="4f5636d9-827f-4b43-9bcb-c4095ad20acc"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="" mc="Standard.AssociationEnd" uid="b3c9f8ea-8b0a-49b3-832a-8246497ccc49"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="" mc="Standard.AssociationEnd" uid="a73976ef-b001-42b3-8d1d-72a3381d1186"/>
         </REFOBJ>
       </LINK>
       <COMP relation="Descriptor">

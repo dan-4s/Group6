@@ -53,6 +53,23 @@
                 </DEPENDENCIES>
               </OBJECT>
             </COMP>
+            <COMP relation="ConstraintDefinition">
+              <OBJECT>
+                <ID name="" mc="Standard.Constraint" uid="6b37068f-a82f-423a-b8f5-03466b6b839a"/>
+                <ATTRIBUTES>
+                  <ATT name="BaseClass"></ATT>
+                  <ATT name="Body"><![CDATA[{guarded}]]></ATT>
+                  <ATT name="Language"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Extension">
+                    <ID name="guarded" mc="Infrastructure.Stereotype" uid="504d58d8-dd07-4e3b-861a-22421f146f41"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
@@ -401,10 +418,9 @@
       </COMP>
       <COMP relation="Descriptor">
         <OBJECT>
-          <ID name="Note" mc="Infrastructure.Note" uid="1d0ff712-4032-4aeb-8069-063ab4c8e59c"/>
+          <ID name="Note" mc="Infrastructure.Note" uid="0008c225-f3ba-4066-80ec-25c61006e9fb"/>
           <ATTRIBUTES>
-            <ATT name="Content"><![CDATA[All operations pertaining to the GreenhouseData class are synchronized because it is a shared data structure between the 2 threads. This means that there should be a <<guarded>> stereotype next to their operation but this is not allowed in modelio. So add it in post!!!!
-]]></ATT>
+            <ATT name="Content"><![CDATA[All operations are guarded since this is a shared object between 2 concurrent threads.]]></ATT>
             <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
             <ATT name="Name"><![CDATA[Note]]></ATT>
             <ATT name="status">1970354901745664</ATT>

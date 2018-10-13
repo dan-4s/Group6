@@ -426,6 +426,55 @@
         <COMPID name="General Purpose Computer" mc="Standard.Node" uid="2a6deaba-f5aa-42f0-84c7-6fd50b1f3073"/>
         <COMPID name="Gertboard" mc="Standard.Node" uid="e02eacec-a239-4ee9-bac0-d5ab969dce10"/>
         <COMPID name="GreenhouseManagement" mc="Standard.Class" uid="81abd3f6-39ea-414f-acdb-31f36d81ef5f"/>
+        <COMPID name="CreateGreenhouseMessage" mc="Standard.Class" uid="1935d2e5-d5f5-48be-ab06-ec1d1e955980"/>
+        <OBJECT>
+          <ID name="MessageType" mc="Standard.Enumeration" uid="47a69dcf-db26-4405-b5b4-fecbe3107086"/>
+          <ATTRIBUTES>
+            <ATT name="IsElementary">true</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[MessageType]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Value">
+              <OBJECT>
+                <ID name="ACK" mc="Standard.EnumerationLiteral" uid="37bf20c5-de85-44b3-851d-39bc078f1aaf"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[ACK]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="COMMAND" mc="Standard.EnumerationLiteral" uid="6ccfd687-6ce9-435b-8fba-f25efbf138f5"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[COMMAND]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="DATA" mc="Standard.EnumerationLiteral" uid="26521034-8246-4b9e-a4b0-6f12304f2f62"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[DATA]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ERROR" mc="Standard.EnumerationLiteral" uid="6dc9df71-7d2c-44fe-bcc7-59acc86ef41d"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[ERROR]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
       </COMP>
       <COMP relation="Product">
         <COMPID name="sysc3010 Deployment diagram" mc="Standard.DeploymentDiagram" uid="67ca1175-27ac-4213-8c39-3e9ef27080e7"/>
