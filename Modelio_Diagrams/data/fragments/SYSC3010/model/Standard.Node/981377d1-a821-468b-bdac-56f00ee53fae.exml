@@ -51,9 +51,9 @@
                 <DEPENDENCIES>
                   <COMP relation="Link">
                     <OBJECT>
-                      <ID name="UDP connection" mc="Standard.Connector" uid="093ba3f6-915e-4623-aa19-8f498280c379"/>
+                      <ID name="UDP connection 1" mc="Standard.Connector" uid="093ba3f6-915e-4623-aa19-8f498280c379"/>
                       <ATTRIBUTES>
-                        <ATT name="Name"><![CDATA[UDP connection]]></ATT>
+                        <ATT name="Name"><![CDATA[UDP connection 1]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
                       </ATTRIBUTES>
                       <DEPENDENCIES></DEPENDENCIES>
@@ -77,7 +77,7 @@
                       </ATTRIBUTES>
                       <DEPENDENCIES>
                         <COMP relation="Link">
-                          <COMPID name="UDP connection" mc="Standard.Connector" uid="093ba3f6-915e-4623-aa19-8f498280c379"/>
+                          <COMPID name="UDP connection 1" mc="Standard.Connector" uid="093ba3f6-915e-4623-aa19-8f498280c379"/>
                         </COMP>
                         <LINK relation="Target">
                           <REFOBJ>

@@ -256,9 +256,9 @@
                       <DEPENDENCIES>
                         <COMP relation="Link">
                           <OBJECT>
-                            <ID name="UDP connection" mc="Standard.Connector" uid="2d317bc9-c9d2-4080-8474-339f4e91e144"/>
+                            <ID name="UDP connection 2" mc="Standard.Connector" uid="2d317bc9-c9d2-4080-8474-339f4e91e144"/>
                             <ATTRIBUTES>
-                              <ATT name="Name"><![CDATA[UDP connection]]></ATT>
+                              <ATT name="Name"><![CDATA[UDP connection 2]]></ATT>
                               <ATT name="status">1970354901745664</ATT>
                             </ATTRIBUTES>
                             <DEPENDENCIES></DEPENDENCIES>
@@ -282,7 +282,7 @@
                             </ATTRIBUTES>
                             <DEPENDENCIES>
                               <COMP relation="Link">
-                                <COMPID name="UDP connection" mc="Standard.Connector" uid="2d317bc9-c9d2-4080-8474-339f4e91e144"/>
+                                <COMPID name="UDP connection 2" mc="Standard.Connector" uid="2d317bc9-c9d2-4080-8474-339f4e91e144"/>
                               </COMP>
                               <LINK relation="Target">
                                 <REFOBJ>
@@ -418,8 +418,8 @@
         <COMPID name="DHT11" mc="Standard.Node" uid="a4d3e607-15d3-441b-8f2e-47a4508c09ff"/>
         <COMPID name="Cooling Fan" mc="Standard.Node" uid="bfc3a167-53c2-4813-9582-30045dfd2f9f"/>
         <COMPID name="LCD Display" mc="Standard.Node" uid="ccb95daa-c0ee-444f-8ef4-62823f97e8e9"/>
-        <COMPID name="&lt;&lt;thread&gt;&gt; DataReceiveTransmit" mc="Standard.Class" uid="2f63d782-5167-49a8-ad69-7874a16f53d8"/>
-        <COMPID name="&lt;&lt;thread&gt;&gt; CommandReceiveExecute" mc="Standard.Class" uid="c119a7a3-ccce-4053-8514-8ded40908c65"/>
+        <COMPID name="                                      &lt;&lt;thread&gt;&gt;                                       DataReceiveTransmit" mc="Standard.Class" uid="2f63d782-5167-49a8-ad69-7874a16f53d8"/>
+        <COMPID name="&lt;&lt;thread&gt;&gt;    CommandReceiveExecute" mc="Standard.Class" uid="c119a7a3-ccce-4053-8514-8ded40908c65"/>
         <COMPID name="&lt;&lt;interface&gt;&gt; Runnable" mc="Standard.Class" uid="3d5c1f2a-bb41-432c-8abe-dbfee6396136"/>
         <COMPID name="GreenhouseData" mc="Standard.Class" uid="fea75aad-2c88-4c75-b418-6a0352401078"/>
         <COMPID name="Google Server" mc="Standard.Node" uid="6d130bc3-5927-4048-aa18-7a7e4b24f57f"/>

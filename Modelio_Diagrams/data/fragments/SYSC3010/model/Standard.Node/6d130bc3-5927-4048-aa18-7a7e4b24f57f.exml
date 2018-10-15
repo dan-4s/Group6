@@ -78,23 +78,6 @@
                         <COMP relation="Opposite">
                           <COMPID name="" mc="Standard.ConnectorEnd" uid="982c379c-f745-4e30-a4ec-6b4de7cf6222"/>
                         </COMP>
-                        <COMP relation="Descriptor">
-                          <OBJECT>
-                            <ID name="Note" mc="Infrastructure.Note" uid="c7139cff-f7fe-4d56-b8b0-19d31195b0ef"/>
-                            <ATTRIBUTES>
-                              <ATT name="Content"><![CDATA[All database protocols will be over internet.. We should probably state that somewhere
-]]></ATT>
-                              <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
-                              <ATT name="Name"><![CDATA[Note]]></ATT>
-                              <ATT name="status">1970354901745664</ATT>
-                            </ATTRIBUTES>
-                            <DEPENDENCIES>
-                              <LINK relation="Model">
-                                <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
-                              </LINK>
-                            </DEPENDENCIES>
-                          </OBJECT>
-                        </COMP>
                       </DEPENDENCIES>
                     </OBJECT>
                   </COMP>
@@ -176,6 +159,9 @@
                   </COMP>
                 </DEPENDENCIES>
               </OBJECT>
+              <REFOBJ>
+                <ID name="" mc="Standard.ConnectorEnd" uid="19da9545-bf93-456a-8390-4f96f37d75d9"/>
+              </REFOBJ>
             </COMP>
           </DEPENDENCIES>
         </OBJECT>
