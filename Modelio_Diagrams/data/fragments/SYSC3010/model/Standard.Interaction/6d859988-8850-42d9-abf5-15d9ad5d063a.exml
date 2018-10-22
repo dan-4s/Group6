@@ -25,7 +25,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[3]]></ATT>
+                  <ATT name="Sequence"><![CDATA[1]]></ATT>
                   <ATT name="Name"><![CDATA[Serial.print(JSON)]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -68,7 +68,7 @@
         <OBJECT>
           <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="26962f86-a7b4-4ca1-8455-844249506fcd"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">801</ATT>
+            <ATT name="LineNumber">855</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
@@ -170,7 +170,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[4]]></ATT>
+                  <ATT name="Sequence"><![CDATA[2]]></ATT>
                   <ATT name="Name"><![CDATA[updateServer(JSON)]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -260,7 +260,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[5]]></ATT>
+                  <ATT name="Sequence"><![CDATA[3]]></ATT>
                   <ATT name="Name"><![CDATA[acknowledge(dataPort, greenhouseIP)]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -320,7 +320,7 @@
                 <ID name="InteractionOperand" mc="Standard.InteractionOperand" uid="c5947ccf-6597-4e53-8249-fb71aceb0972"/>
                 <ATTRIBUTES>
                   <ATT name="Guard"><![CDATA[JSON invalid]]></ATT>
-                  <ATT name="EndLineNumber">838</ATT>
+                  <ATT name="EndLineNumber">892</ATT>
                   <ATT name="LineNumber">724</ATT>
                   <ATT name="Name"><![CDATA[InteractionOperand]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
@@ -354,7 +354,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[12]]></ATT>
+                  <ATT name="Sequence"><![CDATA[10]]></ATT>
                   <ATT name="Name"><![CDATA[sendErrorMessage(errorCode, errorMsg)]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -397,7 +397,7 @@
         <OBJECT>
           <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="81c76c8a-81f6-4a10-9824-111a4ac74f73"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">836</ATT>
+            <ATT name="LineNumber">890</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
@@ -444,7 +444,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[6]]></ATT>
+                  <ATT name="Sequence"><![CDATA[4]]></ATT>
                   <ATT name="Name"><![CDATA[updateDatabase(JSON)]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -499,7 +499,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ReturnMessage</ATT>
-                  <ATT name="Sequence"><![CDATA[8]]></ATT>
+                  <ATT name="Sequence"><![CDATA[6]]></ATT>
                   <ATT name="Name"><![CDATA[command]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -554,7 +554,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[7]]></ATT>
+                  <ATT name="Sequence"><![CDATA[5]]></ATT>
                   <ATT name="Name"><![CDATA[pullFromDatabase()]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -619,7 +619,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[9]]></ATT>
+                  <ATT name="Sequence"><![CDATA[7]]></ATT>
                   <ATT name="Name"><![CDATA[sendCommand(command, commandPort, greenhouseIP)]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -669,7 +669,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">SyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[10]]></ATT>
+                  <ATT name="Sequence"><![CDATA[8]]></ATT>
                   <ATT name="Name"><![CDATA[turnOnFan()]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -719,7 +719,7 @@
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">SyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[11]]></ATT>
+                  <ATT name="Sequence"><![CDATA[9]]></ATT>
                   <ATT name="Name"><![CDATA[turnOffFan()]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
@@ -799,135 +799,28 @@
         </OBJECT>
         <COMPID name="InteractionOperand" mc="Standard.InteractionOperand" uid="1f7ed287-77ef-4f93-9e9b-13058bb3034b"/>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="6c25fcf0-96aa-474d-acd5-4b43497781a3"/>
+          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="b6c97bc8-ef1f-4fa5-a298-db650f244b10"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">70</ATT>
+            <ATT name="LineNumber">775</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <COMP relation="SentMessage">
               <OBJECT>
-                <ID name="firebase.database().ref().on()" mc="Standard.Message" uid="b91aed5b-43bf-4758-a22e-faf2c16adb02"/>
+                <ID name="updateDatabase(ERROR_JSON)" mc="Standard.Message" uid="0a56b19f-b1f1-4383-a4b9-9f33079870c1"/>
                 <ATTRIBUTES>
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[1]]></ATT>
-                  <ATT name="Name"><![CDATA[firebase.database().ref().on()]]></ATT>
+                  <ATT name="Sequence"><![CDATA[11]]></ATT>
+                  <ATT name="Name"><![CDATA[updateDatabase(ERROR_JSON)]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
                   <LINK relation="ReceiveEvent">
                     <REFOBJ>
-                      <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="5fa6a8a4-6eef-480a-9844-8fee29c5d20f"/>
-                    </REFOBJ>
-                  </LINK>
-                  <COMP relation="Descriptor">
-                    <OBJECT>
-                      <ID name="Note" mc="Infrastructure.Note" uid="39a47b3f-2886-4527-8443-e55d4c9c2ee1"/>
-                      <ATTRIBUTES>
-                        <ATT name="Content"><![CDATA[This is the common form for all Firebase operations including user authenticaion and accessing data from the database. 
-]]></ATT>
-                        <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
-                        <ATT name="Name"><![CDATA[Note]]></ATT>
-                        <ATT name="status">1970354901745664</ATT>
-                      </ATTRIBUTES>
-                      <DEPENDENCIES>
-                        <LINK relation="Model">
-                          <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
-                        </LINK>
-                      </DEPENDENCIES>
-                    </OBJECT>
-                  </COMP>
-                </DEPENDENCIES>
-              </OBJECT>
-            </COMP>
-            <LINK relation="Covered">
-              <REFOBJ>
-                <ID name="" mc="Standard.Lifeline" uid="2c2dc7ff-2a84-4192-9d6b-a7432f3106ab"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="5fa6a8a4-6eef-480a-9844-8fee29c5d20f"/>
-          <ATTRIBUTES>
-            <ATT name="LineNumber">78</ATT>
-            <ATT name="Name"></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Started">
-              <REFOBJ>
-                <ID name="" mc="Standard.ExecutionSpecification" uid="0d23377e-1e11-4050-939e-a034cc7c3717"/>
-              </REFOBJ>
-            </LINK>
-            <LINK relation="Covered">
-              <REFOBJ>
-                <ID name="Database" mc="Standard.Lifeline" uid="22e58f74-bfcd-4ad2-8757-6118aee9858c"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="f29cb6c9-709e-4411-bc2a-c0bab0bce22e"/>
-          <ATTRIBUTES>
-            <ATT name="LineNumber">222</ATT>
-            <ATT name="Name"></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Covered">
-              <REFOBJ>
-                <ID name="Database" mc="Standard.Lifeline" uid="22e58f74-bfcd-4ad2-8757-6118aee9858c"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="" mc="Standard.ExecutionSpecification" uid="0d23377e-1e11-4050-939e-a034cc7c3717"/>
-          <ATTRIBUTES>
-            <ATT name="LineNumber">78</ATT>
-            <ATT name="Name"></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Finish">
-              <REFOBJ>
-                <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="f29cb6c9-709e-4411-bc2a-c0bab0bce22e"/>
-              </REFOBJ>
-            </LINK>
-            <LINK relation="Covered">
-              <REFOBJ>
-                <ID name="Database" mc="Standard.Lifeline" uid="22e58f74-bfcd-4ad2-8757-6118aee9858c"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="e0f6d5cf-b2f5-4716-bbb7-0eb5bbb55987"/>
-          <ATTRIBUTES>
-            <ATT name="LineNumber">135</ATT>
-            <ATT name="Name"></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <COMP relation="SentMessage">
-              <OBJECT>
-                <ID name="snapshot(JSON)" mc="Standard.Message" uid="39d2f463-919b-44c6-8735-fd17370f7adc"/>
-                <ATTRIBUTES>
-                  <ATT name="Argument"></ATT>
-                  <ATT name="KindOfMessage">CompleteKind</ATT>
-                  <ATT name="SortOfMessage">ASyncCall</ATT>
-                  <ATT name="Sequence"><![CDATA[2]]></ATT>
-                  <ATT name="Name"><![CDATA[snapshot(JSON)]]></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="ReceiveEvent">
-                    <REFOBJ>
-                      <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="e47d8dad-c17b-42c0-b51b-eb02ac0203f4"/>
+                      <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="881207cd-54af-464a-b05a-0d69d8cb157c"/>
                     </REFOBJ>
                   </LINK>
                 </DEPENDENCIES>
@@ -935,77 +828,62 @@
             </COMP>
             <LINK relation="Covered">
               <REFOBJ>
-                <ID name="Database" mc="Standard.Lifeline" uid="22e58f74-bfcd-4ad2-8757-6118aee9858c"/>
+                <ID name="" mc="Standard.Lifeline" uid="130c0ddc-1543-4b9c-9ffa-95601c322d72"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="e47d8dad-c17b-42c0-b51b-eb02ac0203f4"/>
+          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="881207cd-54af-464a-b05a-0d69d8cb157c"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">146</ATT>
-            <ATT name="Name"></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Covered">
-              <REFOBJ>
-                <ID name="" mc="Standard.Lifeline" uid="2c2dc7ff-2a84-4192-9d6b-a7432f3106ab"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="d3c090b5-5dd5-4585-9b27-db7dca248964"/>
-          <ATTRIBUTES>
-            <ATT name="LineNumber">15</ATT>
+            <ATT name="LineNumber">775</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Started">
               <REFOBJ>
-                <ID name="" mc="Standard.ExecutionSpecification" uid="fdd23ee9-09df-4a89-a9ee-052b9cbd0f08"/>
+                <ID name="" mc="Standard.ExecutionSpecification" uid="d25205e6-d370-4737-8a76-9a020eb605cf"/>
               </REFOBJ>
             </LINK>
             <LINK relation="Covered">
               <REFOBJ>
-                <ID name="" mc="Standard.Lifeline" uid="2c2dc7ff-2a84-4192-9d6b-a7432f3106ab"/>
+                <ID name="Database" mc="Standard.Lifeline" uid="22e58f74-bfcd-4ad2-8757-6118aee9858c"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="9a1a89a6-7904-442e-8a4c-344bf020e678"/>
+          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="194d2646-969c-43d8-8b7f-57f5d1d3f592"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">225</ATT>
+            <ATT name="LineNumber">835</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Covered">
               <REFOBJ>
-                <ID name="" mc="Standard.Lifeline" uid="2c2dc7ff-2a84-4192-9d6b-a7432f3106ab"/>
+                <ID name="Database" mc="Standard.Lifeline" uid="22e58f74-bfcd-4ad2-8757-6118aee9858c"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionSpecification" uid="fdd23ee9-09df-4a89-a9ee-052b9cbd0f08"/>
+          <ID name="" mc="Standard.ExecutionSpecification" uid="d25205e6-d370-4737-8a76-9a020eb605cf"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">-1</ATT>
+            <ATT name="LineNumber">775</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Finish">
               <REFOBJ>
-                <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="9a1a89a6-7904-442e-8a4c-344bf020e678"/>
+                <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="194d2646-969c-43d8-8b7f-57f5d1d3f592"/>
               </REFOBJ>
             </LINK>
             <LINK relation="Covered">
               <REFOBJ>
-                <ID name="" mc="Standard.Lifeline" uid="2c2dc7ff-2a84-4192-9d6b-a7432f3106ab"/>
+                <ID name="Database" mc="Standard.Lifeline" uid="22e58f74-bfcd-4ad2-8757-6118aee9858c"/>
               </REFOBJ>
             </LINK>
           </DEPENDENCIES>
@@ -1065,21 +943,6 @@
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES></DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="" mc="Standard.Lifeline" uid="2c2dc7ff-2a84-4192-9d6b-a7432f3106ab"/>
-          <ATTRIBUTES>
-            <ATT name="Selector"></ATT>
-            <ATT name="Name"></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Represented">
-              <REFOBJ>
-                <ID name="" mc="Standard.BindableInstance" uid="4d94c72e-6b7b-4098-9e44-9eb9cfe7ca9e"/>
-              </REFOBJ>
-            </LINK>
-          </DEPENDENCIES>
         </OBJECT>
       </COMP>
       <COMP relation="OwnedCollaboration">

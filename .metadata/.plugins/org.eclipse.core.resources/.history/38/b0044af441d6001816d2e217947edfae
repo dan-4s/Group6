@@ -1,0 +1,41 @@
+
+/**
+ * This class is meant to standardize the creation of messages between the greenhouse system. It should make 
+ * messaging consistent. 
+ * @author Danilo Vucetic
+ *
+ */
+public abstract class CreateGreenhouseMessage {
+
+	public byte[] acknowledge(){
+		byte[] shit = null;
+		
+		
+		return shit;
+	}
+	
+	
+	public byte[] command(){
+		byte[] shit = null;
+		
+		
+		return shit;
+	}
+	
+	
+	public byte[] data(){
+		byte[] shit = null;
+		
+		
+		return shit;
+	}
+	
+	
+	public byte[] error(){
+		byte[] shit = null;
+		
+		
+		return shit;
+	}
+	
+}

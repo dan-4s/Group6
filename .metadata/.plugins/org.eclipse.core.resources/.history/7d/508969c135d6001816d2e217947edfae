@@ -1,0 +1,7 @@
+
+public class GreenhouseData {
+
+	public print(){
+		System.out.println("greenhouse data is here");
+	}
+}

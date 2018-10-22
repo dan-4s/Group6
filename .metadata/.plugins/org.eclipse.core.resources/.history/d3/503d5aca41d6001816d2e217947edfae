@@ -1,0 +1,10 @@
+
+/**
+ * This class is meant to standardize the creation of messages between the greenhouse system. It should make 
+ * messaging consistent. 
+ * @author Danilo Vucetic
+ *
+ */
+public abstract class CreateGreenhouseMessage {
+
+}

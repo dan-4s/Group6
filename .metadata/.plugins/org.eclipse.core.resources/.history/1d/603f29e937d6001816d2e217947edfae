@@ -1,0 +1,16 @@
+
+public class GreenhouseData {
+
+	//The state variables of the greenhouse
+	private float temperature;
+	private float relativeHumidity;
+	private boolean fanActive;
+	
+	public GreenhouseData(){
+		
+	}
+	
+	public synchronized void print(){
+		System.out.println("from thread: " + Thread.currentThread().getName());
+	}
+}

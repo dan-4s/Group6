@@ -1,0 +1,19 @@
+/**
+ * This Class implements Runnable and so may be run as a separate thread. Each thread is responsible for listening to a 
+ * port which receives commands, and executing the command. It uses the communication protocol as defined in the design
+ * document. 
+ * 
+ * @author Danilo Vucetic
+ *
+ */
+
+
+public class CommandReceiveExecute implements Runnable{
+
+	
+	public void run() {
+		System.out.println("This thread is working: " + Thread.currentThread().getName());
+		
+	}
+
+}

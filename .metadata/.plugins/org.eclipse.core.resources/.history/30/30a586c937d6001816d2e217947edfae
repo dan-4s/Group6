@@ -1,0 +1,13 @@
+
+public class GreenhouseData {
+
+	private String s;
+	
+	public GreenhouseData(){
+		
+	}
+	
+	public synchronized void print(){
+		System.out.println("from thread: " + Thread.currentThread().getName());
+	}
+}
