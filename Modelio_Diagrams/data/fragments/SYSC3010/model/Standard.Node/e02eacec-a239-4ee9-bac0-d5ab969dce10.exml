@@ -58,9 +58,9 @@
                 <DEPENDENCIES>
                   <COMP relation="Link">
                     <OBJECT>
-                      <ID name="Motor Controller pins M1 and M2  " mc="Standard.Connector" uid="6a02a637-5112-4034-ae2c-4982c513d235"/>
+                      <ID name="Motor Controller pins RLY 1-4 and PWR" mc="Standard.Connector" uid="6a02a637-5112-4034-ae2c-4982c513d235"/>
                       <ATTRIBUTES>
-                        <ATT name="Name"><![CDATA[Motor Controller pins M1 and M2  ]]></ATT>
+                        <ATT name="Name"><![CDATA[Motor Controller pins RLY 1-4 and PWR]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
                       </ATTRIBUTES>
                       <DEPENDENCIES></DEPENDENCIES>
@@ -84,7 +84,7 @@
                       </ATTRIBUTES>
                       <DEPENDENCIES>
                         <COMP relation="Link">
-                          <COMPID name="Motor Controller pins M1 and M2  " mc="Standard.Connector" uid="6a02a637-5112-4034-ae2c-4982c513d235"/>
+                          <COMPID name="Motor Controller pins RLY 1-4 and PWR" mc="Standard.Connector" uid="6a02a637-5112-4034-ae2c-4982c513d235"/>
                         </COMP>
                         <COMP relation="Opposite">
                           <COMPID name="port" mc="Standard.ConnectorEnd" uid="8e6b604c-caec-4abd-a16c-05ce236eb1fc"/>

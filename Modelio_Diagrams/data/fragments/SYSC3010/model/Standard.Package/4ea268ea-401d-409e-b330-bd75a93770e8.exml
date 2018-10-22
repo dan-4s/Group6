@@ -15,6 +15,7 @@
     <DEPENDENCIES>
       <COMP relation="OwnedBehavior">
         <COMPID name="Interaction" mc="Standard.Interaction" uid="6d859988-8850-42d9-abf5-15d9ad5d063a"/>
+        <COMPID name="State Machine" mc="Standard.StateMachine" uid="ef75e7ae-6986-4f25-9941-1457bf959882"/>
       </COMP>
       <COMP relation="Declared">
         <OBJECT>

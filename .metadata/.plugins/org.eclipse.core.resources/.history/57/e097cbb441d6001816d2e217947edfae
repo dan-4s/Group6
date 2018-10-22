@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+
+/**
+ * @author Danilo Vucetic
+ *
+ */
+public abstract class CreateGreenhouseMessage {
+
+}

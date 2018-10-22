@@ -17,7 +17,7 @@
     <DEPENDENCIES>
       <COMP relation="OwnedOperation">
         <OBJECT>
-          <ID name="Acknowledge" mc="Standard.Operation" uid="4f5636d9-827f-4b43-9bcb-c4095ad20acc"/>
+          <ID name="acknowledge" mc="Standard.Operation" uid="4f5636d9-827f-4b43-9bcb-c4095ad20acc"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -25,7 +25,7 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[Acknowledge]]></ATT>
+            <ATT name="Name"><![CDATA[acknowledge]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
@@ -82,7 +82,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Command" mc="Standard.Operation" uid="62f22618-fd65-4ddd-92e9-ec92e4ee0ef8"/>
+          <ID name="command" mc="Standard.Operation" uid="62f22618-fd65-4ddd-92e9-ec92e4ee0ef8"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -90,7 +90,7 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[Command]]></ATT>
+            <ATT name="Name"><![CDATA[command]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
@@ -145,7 +145,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Data" mc="Standard.Operation" uid="c46498af-8714-43ec-a5a6-37ff365f3736"/>
+          <ID name="data" mc="Standard.Operation" uid="c46498af-8714-43ec-a5a6-37ff365f3736"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -153,7 +153,7 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[Data]]></ATT>
+            <ATT name="Name"><![CDATA[data]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
@@ -208,7 +208,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Error" mc="Standard.Operation" uid="093e29fe-2572-439f-acba-3f32db35597e"/>
+          <ID name="error" mc="Standard.Operation" uid="093e29fe-2572-439f-acba-3f32db35597e"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -216,7 +216,7 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[Error]]></ATT>
+            <ATT name="Name"><![CDATA[error]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>

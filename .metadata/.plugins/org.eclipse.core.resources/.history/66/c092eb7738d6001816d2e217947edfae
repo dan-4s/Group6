@@ -1,0 +1,54 @@
+
+public class GreenhouseData {
+	//The state variables of the greenhouse
+	private float temperature;
+	private float relativeHumidity;
+	private boolean fanActive;
+	
+	public GreenhouseData(){
+		
+	}
+	
+	/**
+	 * Gets the current temperature of the greenhouse
+	 * @return temperature
+	 */
+	protected synchronized float getTemperature() {
+		return temperature;
+	}
+
+	/**
+	 * Sets the temperature of the greenhouse
+	 * @param temperature
+	 */
+	protected synchronized void setTemperature(float temperature) {
+		this.temperature = temperature;
+	}
+
+	/**
+	 * Gets the relative humidity of the greenhouse
+	 * @return
+	 */
+	protected synchronized float getRelativeHumidity() {
+		return relativeHumidity;
+	}
+
+	protected synchronized void setRelativeHumidity(float relativeHumidity) {
+		this.relativeHumidity = relativeHumidity;
+	}
+
+	protected synchronized boolean isFanActive() {
+		return fanActive;
+	}
+
+	protected synchronized void setFanActive(boolean fanActive) {
+		this.fanActive = fanActive;
+	}
+	
+	/**
+	 * TODO: Prints the current greenhouse data as well as the name of the requesting thread
+	 */
+	public synchronized void print(){
+		System.out.println("from thread: " + Thread.currentThread().getName());
+	}
+}
