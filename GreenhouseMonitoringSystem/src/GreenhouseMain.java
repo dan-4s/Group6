@@ -13,7 +13,16 @@ import java.net.UnknownHostException;
 public class GreenhouseMain {
 
 	public static void main (String []args){
-		//Start both threads here, create the data structure as well. 
+		//TODO: change this from true to false when the serial code is added and when we actually want to turn the fan on and off. 
+		boolean underTest = true;
+		//First check to see if we are testing:
+		if(args.length == 1){
+			if(args[0].equals("testing")){
+				//This means that we are mock testing. System must be set up for mock testing by sending flags to other classes and threads
+				underTest = true;
+			}
+			
+		}
 		
 		//TODO: change all of the ports to user input as well as the IP address
 		//These are the ports and addresses required for communications between the Pi's
@@ -30,14 +39,15 @@ public class GreenhouseMain {
 		int commandPort = 5510; // the port for the CommandReceiveExecute thread
 		int dataPort = 5509; // the port for the DataReceiveTransmit thread
 		
-		//Creating the data structure which will be passed to the threads
+		//Creating the data structure which will be passed to the threads. Initializing with incorrect data.
+		//TODO: stop initializing with incorrect data. do so in the toString or getJSON() methods where if no data is present then put null, or known wrong values. 
 		GreenhouseData grd = new GreenhouseData();
-		grd.setFanActive(true);
+		grd.setFanActive(false);
 		grd.setRelativeHumidity(0);
 		grd.setTemperature(-1);
 		
-		Thread data = new Thread(new DataReceiveTransmit(grd, dataPort, serverPort, serverIP), "DRT");
-		Thread com = new Thread(new CommandReceiveExecute(grd, commandPort, serverPort, serverIP), "COM");
+		Thread data = new Thread(new DataReceiveTransmit(grd, dataPort, serverPort, serverIP, underTest), "DRT");
+		Thread com = new Thread(new CommandReceiveExecute(grd, commandPort, serverPort, serverIP, underTest), "COM");
 		data.start();
 		com.start();
 		

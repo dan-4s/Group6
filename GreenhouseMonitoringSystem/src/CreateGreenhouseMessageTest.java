@@ -20,22 +20,6 @@ import junit.framework.TestCase;
  */
 public class CreateGreenhouseMessageTest extends TestCase{
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-		
-	}
-
 	//The acknowledge() tests
 	/**
 	 * Test method for {@link CreateGreenhouseMessage#acknowledge(CreateGreenhouseMessage.MessageType)}.

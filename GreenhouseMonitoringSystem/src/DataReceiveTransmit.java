@@ -23,11 +23,12 @@ public class DataReceiveTransmit implements Runnable{
 	private DatagramSocket socket;
 	
 	private int numUnreciprocated = 0;
+	private boolean underTest;
 	
 	private final int TIMEOUT_LENGTH = 500; //500ms timeout for sockets waiting on a packet.
 	private final int MAX_SIZE = 500;
 	
-	public DataReceiveTransmit(GreenhouseData grd, int receiveTransmitPort, int serverPort, InetAddress serverIP){
+	public DataReceiveTransmit(GreenhouseData grd, int receiveTransmitPort, int serverPort, InetAddress serverIP, boolean underTest){
 		struct = grd;
 		this.receiveTransmitPort = receiveTransmitPort;
 		this.serverPort = serverPort;
@@ -39,6 +40,7 @@ public class DataReceiveTransmit implements Runnable{
 			socketEx.printStackTrace();
 			System.exit(1);
 		}
+		this.underTest = underTest;
 	}
 	
 	public void run() {
@@ -47,20 +49,24 @@ public class DataReceiveTransmit implements Runnable{
 		int updateNum = 1;
 		while(true){
 			
-			//check the serial port. make sure to do a blocking call!!!
-			//get the data
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(!underTest){
+				//check the serial port. make sure to do a blocking call!!!
+			}else{
+				//pretend to get the data
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				struct.setRelativeHumidity((float)13.195);
+				struct.setTemperature((float)22.00033);
 			}
 			
-			//update the data structure
 			
 			
 			//update the server
-			updateServer("This is update number: " + updateNum);
+			updateServer("Temp: " + struct.getTemperature() + ";Humi: " + struct.getRelativeHumidity() + "; This is update number: " + updateNum);
 			updateNum++;
 		}
 		

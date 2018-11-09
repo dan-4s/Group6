@@ -26,8 +26,9 @@ public class CommandReceiveExecute implements Runnable{
 	private int serverPort;
 	private InetAddress serverIP;
 	private DatagramSocket socket;
+	private boolean underTest;
 	
-	public CommandReceiveExecute(GreenhouseData grd, int commandReceivePort, int serverPort, InetAddress serverIP){
+	public CommandReceiveExecute(GreenhouseData grd, int commandReceivePort, int serverPort, InetAddress serverIP, boolean underTest){
 		struct = grd;
 		this.commandReceivePort = commandReceivePort;
 		this.serverPort = serverPort;
@@ -38,11 +39,13 @@ public class CommandReceiveExecute implements Runnable{
 			socketEx.printStackTrace();
 			System.exit(1);
 		}
+		this.underTest = underTest;
 	}
 	
 	public void run() {
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
 		struct.print();
+		
 		//TODO: remove this.. TESTING PURPOSES ONLY!!!
 		//works
 		byte[] aaa = CreateGreenhouseMessage.data("");
@@ -101,6 +104,7 @@ public class CommandReceiveExecute implements Runnable{
 				turnFanOn();
 			}else if(!newFanStatus && currentStatus){
 				//turn the fan off
+				struct.setFanActive(newFanStatus);
 				turnFanOff();
 			}
 			
@@ -110,15 +114,27 @@ public class CommandReceiveExecute implements Runnable{
 	}
 
 	private void turnFanOn(){
-		//TODO: code, make sure to change the data structure
+		if(!underTest){
+			//TODO: code, make sure to change the data structure
+		}else{
+			//Here, since we know that we are under test, we should just change the value in the data structure but not actually attempt to access any hardware.. 
+			//this operation is actually already done for us above. so allow this code to do nothing!
+		}
 	}
 	
 	
 	private void turnFanOff(){
-		//TODO: code, make sure to change the data structure
+		if(!underTest){
+			//TODO: code, make sure to change the data structure
+		}else{
+			//Here, since we know that we are under test, we should just change the value in the data structure but not actually attempt to access any hardware.. 
+			//this operation is actually already done for us above. so allow this code to do nothing!
+		}
 	}
 	
-	
+	/**
+	 * Creates and sends the acknowledge packet. Since this thread can only accept commands, the only ack's we are sending will be to command messages. 
+	 */
 	private void acknowledge(){
 		byte[] ack = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.COMMAND);
 		DatagramPacket packet = new DatagramPacket(ack, ack.length);
