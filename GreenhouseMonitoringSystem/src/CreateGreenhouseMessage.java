@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 
 //TODO: add error checking to all of the methods below. also make sure to throw exceptions whenever the input is incorrect. then just handle the errors in the other class.
+//TODO: or maybe not.. maybe just allow the errors to be null returns? this should also work the same way..
 public abstract class CreateGreenhouseMessage {
 
 	public enum MessageType{
@@ -43,6 +44,9 @@ public abstract class CreateGreenhouseMessage {
 	
 	public static String acknowledgeDecode(byte[] ack){
 		//check for error
+		if(ack == null){
+			return null;
+		}
 		if(ack.length < 5 || !( new String(Arrays.copyOfRange(ack, 0, 4))).equals("ACK\0") || ack[ack.length-1] != '\0'){
 			return null;
 		}
@@ -71,10 +75,17 @@ public abstract class CreateGreenhouseMessage {
 	
 	public static Boolean commandDecode(byte[] com){
 		//check for error
-		if(com.length < 9 || !( new String(Arrays.copyOfRange(com, 0, 8))).equals("COMMAND\0") || com[com.length-1] != '\0'){
+		if(com == null){
 			return null;
 		}
-		Boolean fanS = Boolean.parseBoolean(new String(Arrays.copyOfRange(com, 8, com.length-1)));
+		if(com.length <= 9 || !( new String(Arrays.copyOfRange(com, 0, 8))).equals("COMMAND\0") || com[com.length-1] != '\0'){
+			return null;
+		}
+		String stringCom = new String(Arrays.copyOfRange(com, 8, com.length-1));
+		Boolean fanS = null;
+		if(stringCom.equals("true") || stringCom.equals("false")){
+			fanS = Boolean.parseBoolean(stringCom);
+		}
 		return fanS;
 		
 	}
@@ -85,6 +96,9 @@ public abstract class CreateGreenhouseMessage {
 	 * @return byte array of data packet
 	 */
 	public static byte[] data(String JSON){
+		if(JSON == null || JSON.equals("")){
+			return null;
+		}
 		String dataString = ("DATA\0"+JSON+"\0");
 		byte[] dataBytes = dataString.getBytes();
 		return dataBytes;
@@ -97,6 +111,9 @@ public abstract class CreateGreenhouseMessage {
 	 */
 	public static String dataDecode(byte[] data){
 		//check for error
+		if(data == null){
+			return null;
+		}
 		if(data.length < 6 || !( new String(Arrays.copyOfRange(data, 0, 5))).equals("DATA\0") || data[data.length-1] != '\0'){
 			return null;
 		}
@@ -111,6 +128,9 @@ public abstract class CreateGreenhouseMessage {
 	 * @return the byte array of an error packet
 	 */
 	public static byte[] error(String errorMessage){
+		if(errorMessage == null){
+			return null;
+		}
 		String errorString = ("ERROR\0"+errorMessage+"\0");
 		byte[] errorBytes = errorString.getBytes();
 		return errorBytes;
@@ -118,6 +138,9 @@ public abstract class CreateGreenhouseMessage {
 	
 	public static String errorDecode(byte[] error){
 		//check for error in packet
+		if(error == null){
+			return null;
+		}
 		if(error.length < 7 || !( new String(Arrays.copyOfRange(error, 0, 6))).equals("ERROR\0") || error[error.length-1] != '\0'){
 			return null;
 		}

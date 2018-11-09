@@ -43,9 +43,9 @@ public class CommandReceiveExecute implements Runnable{
 	public void run() {
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
 		struct.print();
-		//TESTING PURPOSES ONLY!!!
+		//TODO: remove this.. TESTING PURPOSES ONLY!!!
 		//works
-		byte[] aaa = CreateGreenhouseMessage.data("1234");
+		byte[] aaa = CreateGreenhouseMessage.data("");
 		String out = CreateGreenhouseMessage.dataDecode(aaa);
 		System.out.println("The data: " + out);
 		
@@ -56,7 +56,11 @@ public class CommandReceiveExecute implements Runnable{
 		
 		//works
 		aaa = CreateGreenhouseMessage.command(true);
-		boolean oo = CreateGreenhouseMessage.commandDecode(aaa);
+		Boolean oo = CreateGreenhouseMessage.commandDecode(aaa);
+		System.out.println("The com: " + oo);
+		
+		aaa = CreateGreenhouseMessage.command(true);
+		oo = CreateGreenhouseMessage.commandDecode(null);
 		System.out.println("The com: " + oo);
 		
 		//works
