@@ -27,6 +27,7 @@ public class GreenhouseMain {
 		//TODO: change all of the ports to user input as well as the IP address
 		//These are the ports and addresses required for communications between the Pi's
 		int serverPort = 5511; //port of the server
+		int commandPort = 5510; // the port for the CommandReceiveExecute thread
 		
 		//IP address of the server
 		InetAddress serverIP = null;
@@ -36,8 +37,7 @@ public class GreenhouseMain {
 			System.err.println("was not able to reach the host specified");
 		} 
 		
-		int commandPort = 5510; // the port for the CommandReceiveExecute thread
-		int dataPort = 5509; // the port for the DataReceiveTransmit thread
+		
 		
 		//Creating the data structure which will be passed to the threads. Initializing with incorrect data.
 		//TODO: stop initializing with incorrect data. do so in the toString or getJSON() methods where if no data is present then put null, or known wrong values. 
@@ -46,7 +46,7 @@ public class GreenhouseMain {
 		grd.setRelativeHumidity(0);
 		grd.setTemperature(-1);
 		
-		Thread data = new Thread(new DataReceiveTransmit(grd, dataPort, serverPort, serverIP, underTest), "DRT");
+		Thread data = new Thread(new DataReceiveTransmit(grd, serverPort, serverIP, underTest), "DRT");
 		Thread com = new Thread(new CommandReceiveExecute(grd, commandPort, serverPort, serverIP, underTest), "COM");
 		data.start();
 		com.start();

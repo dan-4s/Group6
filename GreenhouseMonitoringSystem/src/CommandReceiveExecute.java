@@ -76,6 +76,7 @@ public class CommandReceiveExecute implements Runnable{
 			byte[] rBuf = new byte[500];
 			DatagramPacket receivePacket = new DatagramPacket(rBuf, rBuf.length);
 			try{
+				System.out.println("CRE: waiting for a packet !!!");
 				socket.receive(receivePacket);
 			}catch(IOException ioe){
 				ioe.printStackTrace();

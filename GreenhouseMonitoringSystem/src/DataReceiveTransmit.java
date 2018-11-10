@@ -17,7 +17,6 @@ import java.util.Arrays;
 public class DataReceiveTransmit implements Runnable{
 
 	private GreenhouseData struct;
-	private int receiveTransmitPort;
 	private int serverPort;
 	private InetAddress serverIP;
 	private DatagramSocket socket;
@@ -28,9 +27,8 @@ public class DataReceiveTransmit implements Runnable{
 	private final int TIMEOUT_LENGTH = 500; //500ms timeout for sockets waiting on a packet.
 	private final int MAX_SIZE = 500;
 	
-	public DataReceiveTransmit(GreenhouseData grd, int receiveTransmitPort, int serverPort, InetAddress serverIP, boolean underTest){
+	public DataReceiveTransmit(GreenhouseData grd, int serverPort, InetAddress serverIP, boolean underTest){
 		struct = grd;
-		this.receiveTransmitPort = receiveTransmitPort;
 		this.serverPort = serverPort;
 		this.serverIP = serverIP;
 		try {
@@ -59,14 +57,13 @@ public class DataReceiveTransmit implements Runnable{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				struct.setRelativeHumidity((float)13.195);
-				struct.setTemperature((float)22.00033);
 			}
 			
 			
 			
 			//update the server
-			updateServer("Temp: " + struct.getTemperature() + ";Humi: " + struct.getRelativeHumidity() + "; This is update number: " + updateNum);
+			//TODO: update this to the JSON text!!
+			updateServer("Temp: " + struct.getTemperature() + ";Humi: " + struct.getRelativeHumidity() + "fanStatus: "  + struct.getFanActive() + "; This is update number: " + updateNum);
 			updateNum++;
 		}
 		
@@ -106,7 +103,8 @@ public class DataReceiveTransmit implements Runnable{
 		//Checking if the received packet is an ACK packet, and if it is then that it is a DATA ack
 		String ack = CreateGreenhouseMessage.acknowledgeDecode(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
 		if(ack == null){
-			System.err.println("DRT: ACK is null");
+			System.err.println("DRT: Error with ACK packet");
+			sendErrorMessage("Did not receive correct/valid ack");
 		}else if(ack.equals("DATA")){
 			System.out.println("DRT: Successfully received ack from server after sending data");
 			numUnreciprocated = 0;
@@ -118,8 +116,8 @@ public class DataReceiveTransmit implements Runnable{
 		if(numUnreciprocated >= 3){
 			sendErrorMessage("Due to " + numUnreciprocated + " unreciprocated packets. The Server might be off or not responding.");
 			numUnreciprocated = 0;
-			System.err.println("DRT: exiting due to number of unreciprocated messages!");
-			System.exit(1);
+			//System.err.println("DRT: exiting due to number of unreciprocated messages!");
+			//TODO: Do something here!!! Was doing :System.exit(1);, but that's a bit much!
 		}
 		
 	}
