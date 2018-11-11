@@ -207,7 +207,7 @@ public class CreateGreenhouseMessageTest extends TestCase{
 	 */
 	@Test
 	public void testCommandDecode2() {
-		byte[] input = {1, 2, 3, 4};
+		byte[] input = {1, 2, 3, 4, 5, 6, 7, 8};
 		Boolean output = CreateGreenhouseMessage.commandDecode(input);
 		assert(output == null);
 	}

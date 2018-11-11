@@ -8,8 +8,6 @@ import java.util.Arrays;
  */
 
 
-//TODO: add error checking to all of the methods below. also make sure to throw exceptions whenever the input is incorrect. then just handle the errors in the other class.
-//TODO: or maybe not.. maybe just allow the errors to be null returns? this should also work the same way..
 public abstract class CreateGreenhouseMessage {
 
 	public enum MessageType{
