@@ -95,8 +95,17 @@ public class DataReceiveTransmit implements Runnable{
 		}catch (SocketTimeoutException e){
 			numUnreciprocated++;
 			System.err.println("DRT: Did not receive response from server, this is unreciprocated response #: " + numUnreciprocated);
+			//Checking if the number of errors has been reached
+			if(numUnreciprocated >= 3){
+				sendErrorMessage("Due to " + numUnreciprocated + " unreciprocated packets. The Server might be off or not responding.");
+				numUnreciprocated = 0;
+				//System.err.println("DRT: exiting due to number of unreciprocated messages!");
+				//TODO: Do something here!!! Was doing :System.exit(1);, but that's a bit much!
+			}
+			return;
 		}catch(IOException ioe){
 			ioe.printStackTrace();
+			//TODO: is this actually acceptable???
 			System.exit(1);
 		}
 		
@@ -104,20 +113,13 @@ public class DataReceiveTransmit implements Runnable{
 		String ack = CreateGreenhouseMessage.acknowledgeDecode(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
 		if(ack == null){
 			System.err.println("DRT: Error with ACK packet");
+			sendErrorMessage("Did not receive correct/valid ack");
 		}else if(ack.equals("DATA")){
 			System.out.println("DRT: Successfully received ack from server after sending data");
 			numUnreciprocated = 0;
 		}else{
 			System.err.println("DRT: Did not receive correct ack: " + ack);
 			sendErrorMessage("Did not receive correct/valid ack");
-		}
-		
-		//Checking if the number of errors has been reached
-		if(numUnreciprocated >= 3){
-			sendErrorMessage("Due to " + numUnreciprocated + " unreciprocated packets. The Server might be off or not responding.");
-			numUnreciprocated = 0;
-			//System.err.println("DRT: exiting due to number of unreciprocated messages!");
-			//TODO: Do something here!!! Was doing :System.exit(1);, but that's a bit much!
 		}
 		
 	}
