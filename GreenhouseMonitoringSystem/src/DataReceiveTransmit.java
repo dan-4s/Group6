@@ -104,12 +104,12 @@ public class DataReceiveTransmit implements Runnable{
 		String ack = CreateGreenhouseMessage.acknowledgeDecode(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
 		if(ack == null){
 			System.err.println("DRT: Error with ACK packet");
-			sendErrorMessage("Did not receive correct/valid ack");
 		}else if(ack.equals("DATA")){
 			System.out.println("DRT: Successfully received ack from server after sending data");
 			numUnreciprocated = 0;
 		}else{
 			System.err.println("DRT: Did not receive correct ack: " + ack);
+			sendErrorMessage("Did not receive correct/valid ack");
 		}
 		
 		//Checking if the number of errors has been reached
