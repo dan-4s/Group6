@@ -96,111 +96,53 @@ public class GreenhouseMockTest {
 		serverPort++;
 	}
 	
-	
-	/**
-	 * This test checks that data packets from the GP are correctly formatted
-	 */
-	@Test
-	public void correctData(){
-		//Start the threads that run in GreenhouseMain
-		dataT.start();
-		comT.start();
-		
-		//Receive a packet
-		byte[] buf = new byte[500];
-		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
-		
-		//receive the data packet
-		try{
-			socket.receive(receivePacket);
-			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
-			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
-			//immediately send ack
-			socket.connect(localIP, receivePacket.getPort());
-			socket.send(ack);
-			socket.disconnect();
-		}catch(IOException ioe){
-			ioe.printStackTrace();
-		}
-		
-		//now check the data packet for correctness:
-		String type = null;
-		String data = null;
-		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
-		for(int n = 0; n < receivePacket.getLength(); n++){
-			if(recData[n] == '\0'){
-				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
-				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
-				data = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-2));
-				System.out.println("Received type: " + type + "; received data = " + data);
-				break;
-			}
-		
-		}
-		
-		assert(type.equals("DATA"));
-		//TODO: update this to the JSON text!!!
-		assert(data.equals("Temp: " + temp + ";Humi: " + humd + "fanStatus: "  + fanStatus + "; This is update number: "));
-		
-	}
-
-	
-	/**
-	 * This test sends an incorrect ACK packet to the GP data thread and expects an error packet in response. 
-	 */
-	@Test
-	public void incorrectAckToGPData(){
-		//Start the threads that run in GreenhouseMain
-		dataT.start();
-		comT.start();
-		
-		//Receive a packet
-		byte[] buf = new byte[500];
-		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
-		
-		//receive the data packet
-		try{
-			socket.receive(receivePacket);
-			byte[] ackBuf = "qwe\0\0999l".getBytes();
-			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
-			//immediately send ack
-			socket.connect(localIP, receivePacket.getPort());
-			socket.send(ack);
-			socket.disconnect();
-		}catch(IOException ioe){
-			ioe.printStackTrace();
-		}
-		
-		buf = new byte[500];
-		receivePacket = new DatagramPacket(buf, buf.length);
-		
-		//receive the error packet
-		try{
-			socket.receive(receivePacket);
-		}catch(IOException ioe){
-			ioe.printStackTrace();
-		}
-		
-		//now check the error packet for correctness:
-		String type = null;
-		String eMessage = null;
-		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
-		for(int n = 0; n < receivePacket.getLength(); n++){
-			if(recData[n] == '\0'){
-				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
-				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
-				eMessage = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-1));
-				System.out.println("Received type: " + type + "; received data = " + eMessage);
-				break;
-			}
-		
-		}
-		System.out.println(eMessage);
-		assert(type.equals("ERROR"));
-		assert(eMessage.equals("Did not receive correct/valid ack"));
-	}
-	
-	
+//TODO:THis should be in Jacob's stub tests
+//	/**
+//	 * This test checks that data packets from the GP are correctly formatted
+//	 */
+//	@Test
+//	public void correctData(){
+//		//Start the threads that run in GreenhouseMain
+//		dataT.start();
+//		comT.start();
+//		
+//		//Receive a packet
+//		byte[] buf = new byte[500];
+//		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+//		
+//		//receive the data packet
+//		try{
+//			socket.receive(receivePacket);
+//			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
+//			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+//			//immediately send ack
+//			socket.connect(localIP, receivePacket.getPort());
+//			socket.send(ack);
+//			socket.disconnect();
+//		}catch(IOException ioe){
+//			ioe.printStackTrace();
+//		}
+//		
+//		//now check the data packet for correctness:
+//		String type = null;
+//		String data = null;
+//		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+//		for(int n = 0; n < receivePacket.getLength(); n++){
+//			if(recData[n] == '\0'){
+//				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+//				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+//				data = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-2));
+//				System.out.println("Received type: " + type + "; received data = " + data);
+//				break;
+//			}
+//		
+//		}
+//		
+//		assert(type.equals("DATA"));
+//		//TODO: update this to the JSON text!!!
+//		assert(data.equals("Temp: " + temp + ";Humi: " + humd + "fanStatus: "  + fanStatus + "; This is update number: "));
+//		
+//	}
 	
 	/**
 	 * In this test we are sending a good command with the same fan status. We should get an ack back and the next data packet should have the same fan status!
@@ -408,6 +350,341 @@ public class GreenhouseMockTest {
 	}
 	
 	/**
+	 * This test sends an incorrect ACK packet to the GP data thread and expects an error packet in response. 
+	 */
+	@Test
+	public void incorrectAckToGPData1(){
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = "qwe\0\0999l".getBytes();
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			//immediately send ack
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the error packet
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now check the error packet for correctness:
+		String type = null;
+		String eMessage = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				eMessage = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-1));
+				System.out.println("Received type: " + type + "; received data = " + eMessage);
+				break;
+			}
+		
+		}
+		System.out.println(eMessage);
+		assert(type.equals("ERROR"));
+		assert(eMessage.equals("Did not receive correct/valid ack"));
+	}
+	
+	
+	/**
+	 * This test sends an incorrect ACK packet to the GP data thread and expects an error packet in response. 
+	 */
+	@Test
+	public void incorrectAckToGPData2(){
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = "".getBytes();
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			//immediately send ack
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the error packet
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now check the error packet for correctness:
+		String type = null;
+		String eMessage = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				eMessage = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-1));
+				System.out.println("Received type: " + type + "; received data = " + eMessage);
+				break;
+			}
+		
+		}
+		System.out.println(eMessage);
+		assert(type.equals("ERROR"));
+		assert(eMessage.equals("Did not receive correct/valid ack"));
+	}
+	
+	/**
+	 * This test sends an incorrect ACK packet to the GP data thread and expects an error packet in response. 
+	 */
+	@Test
+	public void incorrectAckToGPData3(){
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = "ACK\0\0".getBytes();
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			//immediately send ack
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the error packet
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now check the error packet for correctness:
+		String type = null;
+		String eMessage = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				eMessage = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-1));
+				System.out.println("Received type: " + type + "; received data = " + eMessage);
+				break;
+			}
+		
+		}
+		System.out.println(eMessage);
+		assert(type.equals("ERROR"));
+		assert(eMessage.equals("Did not receive correct/valid ack"));
+	}
+	
+	
+	/**
+	 * This test sends an incorrect ACK packet to the GP data thread and expects an error packet in response. 
+	 */
+	@Test
+	public void incorrectAckToGPData4(){
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = "DATA\0123123\0".getBytes();
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			//immediately send ack
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the error packet
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now check the error packet for correctness:
+		String type = null;
+		String eMessage = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				eMessage = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-1));
+				System.out.println("Received type: " + type + "; received data = " + eMessage);
+				break;
+			}
+		
+		}
+		System.out.println(eMessage);
+		assert(type.equals("ERROR"));
+		assert(eMessage.equals("Did not receive correct/valid ack"));
+	}
+	
+	
+	/**
+	 * This test sends an incorrect ACK packet to the GP data thread and expects an error packet in response. 
+	 */
+	@Test
+	public void incorrectAckToGPData5(){
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = "ERROR\0error\0".getBytes();
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			//immediately send ack
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the error packet
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now check the error packet for correctness:
+		String type = null;
+		String eMessage = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				eMessage = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-1));
+				System.out.println("Received type: " + type + "; received data = " + eMessage);
+				break;
+			}
+		
+		}
+		System.out.println(eMessage);
+		assert(type.equals("ERROR"));
+		assert(eMessage.equals("Did not receive correct/valid ack"));
+	}
+	
+	
+	/**
+	 * This test sends an incorrect ACK packet to the GP data thread and expects an error packet in response. 
+	 */
+	@Test
+	public void incorrectAckToGPData6(){
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = "COMMAND\0true\0".getBytes();
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			//immediately send ack
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the error packet
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now check the error packet for correctness:
+		String type = null;
+		String eMessage = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				eMessage = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-1));
+				System.out.println("Received type: " + type + "; received data = " + eMessage);
+				break;
+			}
+		
+		}
+		System.out.println(eMessage);
+		assert(type.equals("ERROR"));
+		assert(eMessage.equals("Did not receive correct/valid ack"));
+	}
+	
+	
+	/**
 	 * In this test we are sending an incorrect command to the GP. 
 	 */
 	@Test
@@ -437,6 +714,351 @@ public class GreenhouseMockTest {
 		
 		//send the incorrect command packet
 		byte[] command = "COMMAND\0this is an incorrect command\0".getBytes();
+		DatagramPacket packet = new DatagramPacket(command, command.length); 
+		try{
+			socket.connect(localIP, commandPort);
+			socket.send(packet);
+			socket.disconnect();
+		} catch (IOException io) {
+			io.printStackTrace();
+			System.exit(1);
+		}
+		
+		//receive the error packet
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now that a packet has been received, we can find it's type and respond accordingly. 
+		String message = new String(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
+		System.out.println("Received Message: " + message);
+		
+		String type = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				System.out.println("Received type: " + type);
+				break;
+			}
+		
+		}
+		
+		assert(type.equals("ERROR"));
+	}
+	
+	/**
+	 * In this test we are sending an incorrect command to the GP. 
+	 */
+	@Test
+	public void incorrectCommand2() {
+		// we expect the program to send data packets every 2 seconds.. because I programmed it to do so..
+		//so set up all of our stuff first, then enable the program to run and start the testing. 
+		
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//send the incorrect command packet
+		byte[] command = "asdasd".getBytes();
+		DatagramPacket packet = new DatagramPacket(command, command.length); 
+		try{
+			socket.connect(localIP, commandPort);
+			socket.send(packet);
+			socket.disconnect();
+		} catch (IOException io) {
+			io.printStackTrace();
+			System.exit(1);
+		}
+		
+		//receive the error packet
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now that a packet has been received, we can find it's type and respond accordingly. 
+		String message = new String(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
+		System.out.println("Received Message: " + message);
+		
+		String type = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				System.out.println("Received type: " + type);
+				break;
+			}
+		
+		}
+		
+		assert(type.equals("ERROR"));
+	}
+	
+	/**
+	 * In this test we are sending an incorrect command to the GP. 
+	 */
+	@Test
+	public void incorrectCommand3() {
+		// we expect the program to send data packets every 2 seconds.. because I programmed it to do so..
+		//so set up all of our stuff first, then enable the program to run and start the testing. 
+		
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//send the incorrect command packet
+		byte[] command = "COMMAND\0\0".getBytes();
+		DatagramPacket packet = new DatagramPacket(command, command.length); 
+		try{
+			socket.connect(localIP, commandPort);
+			socket.send(packet);
+			socket.disconnect();
+		} catch (IOException io) {
+			io.printStackTrace();
+			System.exit(1);
+		}
+		
+		//receive the error packet
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now that a packet has been received, we can find it's type and respond accordingly. 
+		String message = new String(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
+		System.out.println("Received Message: " + message);
+		
+		String type = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				System.out.println("Received type: " + type);
+				break;
+			}
+		
+		}
+		
+		assert(type.equals("ERROR"));
+	}
+	
+	/**
+	 * In this test we are sending an incorrect command to the GP. 
+	 */
+	@Test
+	public void incorrectCommand4() {
+		// we expect the program to send data packets every 2 seconds.. because I programmed it to do so..
+		//so set up all of our stuff first, then enable the program to run and start the testing. 
+		
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//send the incorrect command packet
+		byte[] command = "DATA\0notacommand\0".getBytes();
+		DatagramPacket packet = new DatagramPacket(command, command.length); 
+		try{
+			socket.connect(localIP, commandPort);
+			socket.send(packet);
+			socket.disconnect();
+		} catch (IOException io) {
+			io.printStackTrace();
+			System.exit(1);
+		}
+		
+		//receive the error packet
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now that a packet has been received, we can find it's type and respond accordingly. 
+		String message = new String(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
+		System.out.println("Received Message: " + message);
+		
+		String type = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				System.out.println("Received type: " + type);
+				break;
+			}
+		
+		}
+		
+		assert(type.equals("ERROR"));
+	}
+	
+	/**
+	 * In this test we are sending an incorrect command to the GP. 
+	 */
+	@Test
+	public void incorrectCommand5() {
+		// we expect the program to send data packets every 2 seconds.. because I programmed it to do so..
+		//so set up all of our stuff first, then enable the program to run and start the testing. 
+		
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//send the incorrect command packet
+		byte[] command = "ERROR\0errir\0".getBytes();
+		DatagramPacket packet = new DatagramPacket(command, command.length); 
+		try{
+			socket.connect(localIP, commandPort);
+			socket.send(packet);
+			socket.disconnect();
+		} catch (IOException io) {
+			io.printStackTrace();
+			System.exit(1);
+		}
+		
+		//receive the error packet
+		buf = new byte[500];
+		receivePacket = new DatagramPacket(buf, buf.length);
+		
+		try{
+			socket.receive(receivePacket);
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//now that a packet has been received, we can find it's type and respond accordingly. 
+		String message = new String(Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength()));
+		System.out.println("Received Message: " + message);
+		
+		String type = null;
+		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+		for(int n = 0; n < receivePacket.getLength(); n++){
+			if(recData[n] == '\0'){
+				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
+				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+				System.out.println("Received type: " + type);
+				break;
+			}
+		
+		}
+		
+		assert(type.equals("ERROR"));
+	}
+	
+	/**
+	 * In this test we are sending an incorrect command to the GP. 
+	 */
+	@Test
+	public void incorrectCommand6() {
+		// we expect the program to send data packets every 2 seconds.. because I programmed it to do so..
+		//so set up all of our stuff first, then enable the program to run and start the testing. 
+		
+		//Start the threads that run in GreenhouseMain
+		dataT.start();
+		comT.start();
+		
+		//Receive a packet
+		byte[] buf = new byte[500];
+		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+		
+		//receive the data packet
+		try{
+			socket.receive(receivePacket);
+			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
+			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
+			socket.connect(localIP, receivePacket.getPort());
+			socket.send(ack);
+			socket.disconnect();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		
+		//send the incorrect command packet
+		byte[] command = "ACK\0DATA\0".getBytes();
 		DatagramPacket packet = new DatagramPacket(command, command.length); 
 		try{
 			socket.connect(localIP, commandPort);
@@ -530,14 +1152,4 @@ public class GreenhouseMockTest {
 			}
 		}
 	}
-	
-	/**
-	 * 
-	 */
-	@Test
-	public void invalidHeader1(){
-		
-	}
-	
-
 }
