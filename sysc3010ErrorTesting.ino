@@ -1,6 +1,7 @@
 
 #include <LiquidCrystal.h>
 #include <DHT.h>
+#include <ArduinoJson.h>
 
 const int d4=4,d5=5,d6=6,d7=7;
 LiquidCrystal LCD(12,11,d4,d5,d6,d7);
@@ -79,26 +80,29 @@ void runTests(){
 }
 
 void loop() {
+  StaticJsonBuffer<200> jsonBuffer;
   if(gloablFail==false){
-  delay(3000);
-  write_counter = write_counter+1;
-  float Temp = dht.readTemperature();
-  float Humidity = dht.readHumidity();
-  Serial.print("{ \"Temperature\":");
-  Serial.print(Temp);
-  Serial.print(", \"Humidity\":");
-  Serial.print(Humidity);
-  Serial.print("}\n");
+    JsonObject& root = jsonBuffer.createObject();
 
-  LCD.clear();
-  LCD.setCursor(0,0);
-  LCD.write("T:");
-  LCD.print(Temp);
-  LCD.write(" H:");
-  LCD.print(Humidity);
-
-  LCD.setCursor(0,1);
-  LCD.write("W.R.T.C: ");
-  LCD.print(write_counter+1);
+    root["Temperature"] = "gps";
+    root["Humidity"] = 1351824120;
+    delay(3000);
+    write_counter = write_counter+1;
+    float Temp = dht.readTemperature();
+    float Humidity = dht.readHumidity();
+    root["Temperature"] = Temp;
+    root["Humidity"] = Humidity;
+    root.printTo(Serial);
+  
+    LCD.clear();
+    LCD.setCursor(0,0);
+    LCD.write("T:");
+    LCD.print(Temp);
+    LCD.write(" H:");
+    LCD.print(Humidity);
+  
+    LCD.setCursor(0,1);
+    LCD.write("W.R.T.C: ");
+    LCD.print(write_counter+1);
   }
 }
