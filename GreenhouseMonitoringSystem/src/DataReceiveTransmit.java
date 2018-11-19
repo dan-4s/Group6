@@ -48,9 +48,9 @@ public class DataReceiveTransmit implements Runnable{
 		while(true){
 			
 			if(!underTest){
-				//check the serial port. make sure to do a blocking call!!!
+				//check the serial port. 
 			}else{
-				//pretend to get the data
+				//don't do anything.. this is the stub section..
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
