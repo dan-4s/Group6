@@ -16,8 +16,7 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
 final GpioController gpio = GpioFactory.getInstance();
-final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MOTOR",
-PinState.HIGH);
+final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MOTOR",PinState.HIGH);
 
 
 
