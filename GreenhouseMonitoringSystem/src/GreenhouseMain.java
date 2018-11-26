@@ -14,12 +14,14 @@ public class GreenhouseMain {
 
 	public static void main (String []args){
 		//TODO: change this from true to false when the serial code is added and when we actually want to turn the fan on and off. 
-		boolean underTest = true;
+		boolean underTest = false;
+		String ip = "127.0.0.1"; //this is local host
 		//First check to see if we are testing:
 		if(args.length == 1){
 			if(args[0].equals("testing")){
 				//This means that we are mock testing. System must be set up for mock testing by sending flags to other classes and threads
 				underTest = true;
+				ip = "10.0.0.61";//this is the SP
 			}
 			
 		}
@@ -32,7 +34,7 @@ public class GreenhouseMain {
 		//IP address of the server
 		InetAddress serverIP = null;
 		try {
-			serverIP = InetAddress.getLocalHost(); //TODO: for now just using local host, but later should change to the actual IP
+			serverIP = InetAddress.getByName(ip); //this will fetch the ip address for either local host or the SP based on testing flag
 		} catch (UnknownHostException e) {
 			System.err.println("was not able to reach the host specified");
 		} 
