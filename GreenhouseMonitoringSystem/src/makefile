@@ -5,13 +5,13 @@ all:
 manage:
 	javac -cp .:\* GreenhouseManagement.java
 
-runManage:
+runManage: manage
 	java -cp .:\* GreenhouseManagement
 
 main:
 	javac -cp .:\* GreenhouseMain.java
 
-runMain:
+runMain: main
 	java -cp .:\* GreenhouseMain	
 
 testing:

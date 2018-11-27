@@ -46,6 +46,7 @@ public class GreenhouseManagement {
 			e.printStackTrace();
 			System.exit(1);
 		}
+		boolean fanSTAT = false;
 		
 		while(true){
 			//receive message
@@ -113,8 +114,8 @@ public class GreenhouseManagement {
 			
 			//sending command, want a timeout of 500ms to get a response. otherwise just indicate error has occurred
 			System.out.println("sending command! port = " + commandPort);
-			sendCommand(commandPort, receivePacket.getAddress(), true); 
-			
+			sendCommand(commandPort, receivePacket.getAddress(), fanSTAT); 
+			fanSTAT = !fanSTAT;
 			
 			
 		}

@@ -54,6 +54,14 @@ public class DataReceiveTransmit implements Runnable{
 			if(!underTest){
 				//check the serial port. 
 				try{
+				        try {
+					    //only want to update the data every 2 or so seconds. This is because the arduino can only pull
+					    //new data every 2 seconds so there is no point in polling more than that.
+					     Thread.sleep(2000);
+				        } catch (InterruptedException e) {
+					     // TODO Auto-generated catch block
+					     e.printStackTrace();
+			          	}
 					tempJSON= serialPort.getSerialJSON();
 					struct.setRelativeHumidity((float)Float.parseFloat(tempJSON.getString("humidity")));
 					struct.setTemperature((float)Float.parseFloat(tempJSON.getString("temperature")));

@@ -15,13 +15,13 @@ public class GreenhouseMain {
 	public static void main (String []args){
 		//TODO: change this from true to false when the serial code is added and when we actually want to turn the fan on and off. 
 		boolean underTest = false;
-		String ip = "127.0.0.1"; //this is local host
+		String ip = "10.0.0.61"; //this is SP if we are using the RPi
 		//First check to see if we are testing:
 		if(args.length == 1){
 			if(args[0].equals("testing")){
 				//This means that we are mock testing. System must be set up for mock testing by sending flags to other classes and threads
 				underTest = true;
-				ip = "10.0.0.61";//this is the SP
+				ip = "127.0.0.1";//this is the local host.. if we are testing.. 
 			}
 			
 		}
