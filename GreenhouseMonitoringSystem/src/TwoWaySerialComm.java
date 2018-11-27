@@ -1,22 +1,20 @@
 import com.fazecast.jSerialComm.*;
 import org.json.*;
-class TwoWaySerialComm{
-    
-	public static void main(String[] args)
-    {
-        TwoWaySerialComm com = new TwoWaySerialComm();
-        com.listen();
+class TwoWaySerialComm implements Runnable{
+	JSONObject jsonObj;
+	
+	TwoWaySerialComm() {
+        this.jsonObj = new JSONObject();
     }
-
-    public void listen()
+    
+    public void run()
     {
     	  SerialPort comPort = SerialPort.getCommPorts()[0];
           comPort.openPort();
           String last="";
           String current;
           String temp = null;
-          JSONObject jsonObj = null;
-
+    
        
           try {
               while (true)
@@ -31,17 +29,21 @@ class TwoWaySerialComm{
                   if(!current.equals(last))
                 	temp = new String(readBuffer);
                 	try{
-                		jsonObj = new JSONObject(temp);
-                        System.out.println(">>> " + temp );
+                		this.jsonObj = new JSONObject(temp);
+                		System.out.println("recived:   "+temp);
                         last = current;
                 	}
                 	catch(Exception e){
-                		System.out.println(jsonObj);
+                		System.out.println(this.jsonObj);
                 	}
                   	
               }
           } catch (Exception e) { e.printStackTrace(); }
           comPort.closePort();
     }
+    
+    protected synchronized JSONObject getSerialJSON() {
+		return this.jsonObj;
+	}
     
 }

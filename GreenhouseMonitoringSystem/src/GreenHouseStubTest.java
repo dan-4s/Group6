@@ -195,16 +195,16 @@ public class GreenHouseStubTest {
 				}
 				
 				//now check the data packet for correctness:
-				String type = null;
-				String data = null;
-				byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
+				String type2 = null;
+				String data2 = null;
+				byte[] recData2 = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
 				for(int n = 0; n < receivePacket.getLength(); n++){
-					if(recData[n] == '\0'){
+					if(recData2[n] == '\0'){
 						//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
-						type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
-						data = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-2));
-						System.out.println(data);
-						System.out.println("Received type: " + type + "; received data = " + data);
+						type2 = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
+						data2 = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-2));
+						System.out.println(data2);
+						System.out.println("Received type: " + type2 + "; received data = " + data2);
 						break;
 					}
 				

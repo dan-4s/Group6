@@ -9,14 +9,14 @@ import java.security.cert.CRLReason;
 import java.util.Arrays;
 
 //FOR GPIO ACCESS
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinState;
-import com.pi4j.io.gpio.RaspiPin;
+//import com.pi4j.io.gpio.GpioController;
+//import com.pi4j.io.gpio.GpioFactory;
+//import com.pi4j.io.gpio.GpioPinDigitalOutput;
+//import com.pi4j.io.gpio.PinState;
+//import com.pi4j.io.gpio.RaspiPin;
 
-final GpioController gpio = GpioFactory.getInstance();
-final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MOTOR",PinState.HIGH);
+//final GpioController gpio = GpioFactory.getInstance();
+//final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MOTOR",PinState.HIGH);
 
 
 
@@ -128,7 +128,7 @@ public class CommandReceiveExecute implements Runnable{
 	private void turnFanOn(){
 		if(!underTest){
 			//TODO: code, make sure to change the data structure
-			pin.high();
+		//	pin.high();
 
 		}else{
 			//Here, since we know that we are under test, we should just change the value in the data structure but not actually attempt to access any hardware.. 
@@ -140,7 +140,7 @@ public class CommandReceiveExecute implements Runnable{
 	private void turnFanOff(){
 		if(!underTest){
 			//TODO: code, make sure to change the data structure
-			pin.low();
+		//	pin.low();
 		}else{
 			//Here, since we know that we are under test, we should just change the value in the data structure but not actually attempt to access any hardware.. 
 			//this operation is actually already done for us above. so allow this code to do nothing!

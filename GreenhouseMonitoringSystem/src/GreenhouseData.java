@@ -1,3 +1,5 @@
+import org.json.*;
+
 /**
  * This class is the data structure in which the greenhouse data is stored. All methods are synchronized as to
  * disallow the threads from concurrent access of the data. 
@@ -65,6 +67,17 @@ public class GreenhouseData {
 	 */
 	protected synchronized void setFanActive(boolean fanActive) {
 		this.fanActive = fanActive;
+	}
+	/**
+	 * returns json representation of greenhousedata
+	 * @throws JSONException 
+	 */
+	protected synchronized JSONObject getJSON() throws JSONException {
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("humidity", this.relativeHumidity);
+		jsonObj.put("temperature", this.temperature);
+		jsonObj.put("fanStatus", this.fanActive);
+		return jsonObj;
 	}
 	
 	/**

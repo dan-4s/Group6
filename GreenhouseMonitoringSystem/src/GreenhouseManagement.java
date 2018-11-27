@@ -1,10 +1,24 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+
+import org.json.*;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.SocketException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.security.cert.CRLReason;
 import java.util.Arrays;
+
 
 
 /**
@@ -66,7 +80,12 @@ public class GreenhouseManagement {
 				continue;
 			}else if(type.equals("DATA")){
 				System.out.println("DATA received: " + CreateGreenhouseMessage.dataDecode(recData));
-				updateDatabase(CreateGreenhouseMessage.dataDecode(recData));
+				try {
+					updateDatabase(CreateGreenhouseMessage.dataDecode(recData));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				acknowledge(receivePacket.getPort(), receivePacket.getAddress(), CreateGreenhouseMessage.MessageType.DATA);
 			}else if(type.equals("ERROR")){
 				System.err.println("ERROR received: " + CreateGreenhouseMessage.errorDecode(recData));
@@ -145,12 +164,58 @@ public class GreenhouseManagement {
 	
 	//TODO: Jacob this is you
 	private static String pullFromDatabase(){
+		try {
+			URL obj = new URL("https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/sensorData/Sensor1");
+			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("User-Agent", "Mozilla/5.0");
+			int responseCode = con.getResponseCode();
+			System.out.println("GET Response Code :: " + responseCode);
+			if (responseCode == HttpURLConnection.HTTP_OK) { // success
+				BufferedReader in = new BufferedReader(new InputStreamReader(
+						con.getInputStream()));
+				String inputLine;
+				StringBuffer response = new StringBuffer();
+	
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
+				// print result
+				return response.toString();
+			} else {
+				System.out.println("GET request not worked");
+				return "";
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("ERROR: "+ e);
+		}
 		return null;
 	}
 	
 	//TODO: Jacob this is you
-	private static void updateDatabase(String JSON){
-		
+	private static void updateDatabase(String JSON) throws JSONException{
+		try {
+			URL obj = new URL("https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/sensorData/Sensor1.json");
+			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+			con.setRequestMethod("PUT");
+			con.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+			// For POST only - START
+			con.setDoOutput(true);
+			OutputStream os = con.getOutputStream();
+			os.write(JSON.getBytes());
+			os.flush();
+			os.close();
+			// For POST only - END
+			int responseCode = con.getResponseCode();
+			System.out.println("POST Response Code :: " + responseCode);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("ERROR: "+ e);
+		}
 	}
 	
 	

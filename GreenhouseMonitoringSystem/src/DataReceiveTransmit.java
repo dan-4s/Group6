@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.Arrays;
+import org.json.*;
 
 /**
  * This Class implements Runnable and so may be run as a separate thread. Each thread is responsible for listening to a 
@@ -20,6 +21,7 @@ public class DataReceiveTransmit implements Runnable{
 	private int serverPort;
 	private InetAddress serverIP;
 	private DatagramSocket socket;
+	private JSONObject tempJSON;
 	
 	private int numUnreciprocated = 0;
 	private boolean underTest;
@@ -45,10 +47,20 @@ public class DataReceiveTransmit implements Runnable{
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
 		struct.print();
 		int updateNum = 1;
+		TwoWaySerialComm serialPort = new TwoWaySerialComm();
+	    new Thread(serialPort).start();
 		while(true){
 			
 			if(!underTest){
 				//check the serial port. 
+				try{
+					tempJSON= serialPort.getSerialJSON();
+					struct.setRelativeHumidity((float)Float.parseFloat(tempJSON.getString("humidity")));
+					struct.setTemperature((float)Float.parseFloat(tempJSON.getString("temperature")));
+					//struct.setJSON(tempJSON);
+				}catch (Exception e) {
+					System.out.println("Error: not reading serial data"+ e);
+				}
 			}else{
 				//don't do anything.. this is the stub section..
 				try {
@@ -63,7 +75,12 @@ public class DataReceiveTransmit implements Runnable{
 			
 			//update the server
 			//TODO: update this to the JSON text!!
-			updateServer("Temp: " + struct.getTemperature() + ";Humi: " + struct.getRelativeHumidity() + "fanStatus: "  + struct.getFanActive() + "; This is update number: " + updateNum);
+			try {
+				updateServer(struct.getJSON());
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			updateNum++;
 		}
 		
@@ -73,10 +90,10 @@ public class DataReceiveTransmit implements Runnable{
 	 * This method sends the JSON to the server using the communications protocol defined in the design
 	 * @param JSON
 	 */
-	private void updateServer(String JSON){
+	private void updateServer(JSONObject JSON){
 		
 		//Send the data to the server and wait for a response
-		byte[] data = CreateGreenhouseMessage.data(JSON);
+		byte[] data = CreateGreenhouseMessage.data(JSON.toString());
 		DatagramPacket packet = new DatagramPacket(data, data.length);
 		try{
 			socket.connect(serverIP, serverPort);

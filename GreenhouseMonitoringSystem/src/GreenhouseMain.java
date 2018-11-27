@@ -44,16 +44,12 @@ public class GreenhouseMain {
 		//Creating the data structure which will be passed to the threads. Initializing with incorrect data.
 		//TODO: stop initializing with incorrect data. do so in the toString or getJSON() methods where if no data is present then put null, or known wrong values. 
 		GreenhouseData grd = new GreenhouseData();
-		grd.setFanActive(false);
-		grd.setRelativeHumidity(0);
-		grd.setTemperature(-1);
 		
 		Thread data = new Thread(new DataReceiveTransmit(grd, serverPort, serverIP, underTest), "DRT");
 		Thread com = new Thread(new CommandReceiveExecute(grd, commandPort, serverPort, serverIP, underTest), "COM");
 		data.start();
 		com.start();
 		
-		
-		
+	
 	}
 }
