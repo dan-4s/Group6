@@ -57,31 +57,6 @@ public class CommandReceiveExecute implements Runnable{
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
 		struct.print();
 		
-		//TODO: remove this.. TESTING PURPOSES ONLY!!!
-		//works
-		byte[] aaa = CreateGreenhouseMessage.data("");
-		String out = CreateGreenhouseMessage.dataDecode(aaa);
-		System.out.println("The data: " + out);
-		
-		//works
-		aaa = CreateGreenhouseMessage.error("12345");
-		out = CreateGreenhouseMessage.errorDecode(aaa);
-		System.out.println("The error: " + out);
-		
-		//works
-		aaa = CreateGreenhouseMessage.command(true);
-		Boolean oo = CreateGreenhouseMessage.commandDecode(aaa);
-		System.out.println("The com: " + oo);
-		
-		aaa = CreateGreenhouseMessage.command(true);
-		oo = CreateGreenhouseMessage.commandDecode(null);
-		System.out.println("The com: " + oo);
-		
-		//works
-		aaa = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
-		out = CreateGreenhouseMessage.acknowledgeDecode(aaa);
-		System.out.println("The ack: " + out);
-		
 		//command wait loop:
 		while(true){
 			byte[] rBuf = new byte[500];
@@ -127,8 +102,8 @@ public class CommandReceiveExecute implements Runnable{
 
 	private void turnFanOn(){
 		if(!underTest){
-			//TODO: code, make sure to change the data structure
-		//	pin.high();
+			//TODO: make sure this actually works!
+			//pin.high();
 
 		}else{
 			//Here, since we know that we are under test, we should just change the value in the data structure but not actually attempt to access any hardware.. 
@@ -139,8 +114,8 @@ public class CommandReceiveExecute implements Runnable{
 	
 	private void turnFanOff(){
 		if(!underTest){
-			//TODO: code, make sure to change the data structure
-		//	pin.low();
+			//TODO: make sure this works
+			//pin.low();
 		}else{
 			//Here, since we know that we are under test, we should just change the value in the data structure but not actually attempt to access any hardware.. 
 			//this operation is actually already done for us above. so allow this code to do nothing!

@@ -59,7 +59,6 @@ public class DataReceiveTransmit implements Runnable{
 					    //new data every 2 seconds so there is no point in polling more than that.
 					     Thread.sleep(2000);
 				        } catch (InterruptedException e) {
-					     // TODO Auto-generated catch block
 					     e.printStackTrace();
 			          	}
 					tempJSON= serialPort.getSerialJSON();
@@ -74,7 +73,6 @@ public class DataReceiveTransmit implements Runnable{
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -82,11 +80,9 @@ public class DataReceiveTransmit implements Runnable{
 			
 			
 			//update the server
-			//TODO: update this to the JSON text!!
 			try {
 				updateServer(struct.getJSON());
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			updateNum++;
@@ -123,14 +119,13 @@ public class DataReceiveTransmit implements Runnable{
 			//Checking if the number of errors has been reached
 			if(numUnreciprocated >= 3){
 				sendErrorMessage("Due to " + numUnreciprocated + " unreciprocated packets. The Server might be off or not responding.");
-				numUnreciprocated = 0;
-				//System.err.println("DRT: exiting due to number of unreciprocated messages!");
-				//TODO: Do something here!!! Was doing :System.exit(1);, but that's a bit much!
+				numUnreciprocated = 0; //setting back to zero so that if there are 3 unreciprocated again we can send the error message again. 
 			}
 			return;
 		}catch(IOException ioe){
 			ioe.printStackTrace();
-			//TODO: is this actually acceptable???
+			//THIS means that there has been some error with the IP address, or the system is not connected via an ethernet cable. 
+			//No choice but to exit the program
 			System.exit(1);
 		}
 		
