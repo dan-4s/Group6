@@ -1,13 +1,11 @@
-import java.awt.SecondaryLoop;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.security.cert.CRLReason;
 import java.util.Arrays;
 
+//TODO: remove if we are not using!
 //FOR GPIO ACCESS
 //import com.pi4j.io.gpio.GpioController;
 //import com.pi4j.io.gpio.GpioFactory;
@@ -25,7 +23,7 @@ import java.util.Arrays;
  * port which receives commands, and executing the command. It uses the communication protocol as defined in the design
  * document. 
  * 
- * @author Danilo Vucetic
+ * @author Danilo Vucetic and Jacob Martin
  *
  */
 
@@ -76,6 +74,7 @@ public class CommandReceiveExecute implements Runnable{
 			}catch(Exception e){
 				e.printStackTrace();
 				sendErrorMessage("Error occured when decoding command message. Make sure that command is correct format and can be decoded.");
+				continue;
 			}
 			
 			if(newFanStatus == null){

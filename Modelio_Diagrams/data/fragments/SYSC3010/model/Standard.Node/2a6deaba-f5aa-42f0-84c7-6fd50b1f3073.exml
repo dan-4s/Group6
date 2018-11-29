@@ -42,9 +42,9 @@
                 <DEPENDENCIES>
                   <COMP relation="Link">
                     <OBJECT>
-                      <ID name="Database Protocol" mc="Standard.Connector" uid="2deb7df8-751b-4a4b-b88e-899ddee18478"/>
+                      <ID name="Websocket" mc="Standard.Connector" uid="2deb7df8-751b-4a4b-b88e-899ddee18478"/>
                       <ATTRIBUTES>
-                        <ATT name="Name"><![CDATA[Database Protocol]]></ATT>
+                        <ATT name="Name"><![CDATA[Websocket]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
                       </ATTRIBUTES>
                       <DEPENDENCIES></DEPENDENCIES>
@@ -68,7 +68,7 @@
                       </ATTRIBUTES>
                       <DEPENDENCIES>
                         <COMP relation="Link">
-                          <COMPID name="Database Protocol" mc="Standard.Connector" uid="2deb7df8-751b-4a4b-b88e-899ddee18478"/>
+                          <COMPID name="Websocket" mc="Standard.Connector" uid="2deb7df8-751b-4a4b-b88e-899ddee18478"/>
                         </COMP>
                         <LINK relation="Target">
                           <REFOBJ>

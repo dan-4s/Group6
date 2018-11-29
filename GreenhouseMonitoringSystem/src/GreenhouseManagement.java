@@ -2,21 +2,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-
-import org.json.*;
-
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.SocketException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.security.cert.CRLReason;
 import java.util.Arrays;
 
 
@@ -142,8 +133,8 @@ public class GreenhouseManagement {
 	 * @param IPAddress: address of the GP
 	 * @param fanStatus: This is what the fan should be changed to. true meaning on, false meaning off. 
 	 */
-	private static void sendCommand(int port, InetAddress IPAddress, boolean fanStatus){
-		byte[] ack = CreateGreenhouseMessage.command(fanStatus);
+	private static void sendCommand(int port, InetAddress IPAddress, boolean newFanStatus){
+		byte[] ack = CreateGreenhouseMessage.command(newFanStatus);
 		DatagramPacket packet = new DatagramPacket(ack, ack.length);
 		try{
 			socket.connect(IPAddress, port);
@@ -157,8 +148,8 @@ public class GreenhouseManagement {
 	}
 	
 	/**
-	 * This method checks the database for new commands. If a new command is pending, a command packet will be sent to the GP. 
-	 * @return the fan status which will be sent in a command packet 
+	 * This method checks the database for new commands. Returns the expected value of the fan.
+	 * @return the new / expected fan status from the database
 	 */
 	private static Boolean pullFromDatabase(){
 		//FIXME: JACOB comment these methods. 

@@ -93,6 +93,19 @@
                 </DEPENDENCIES>
               </OBJECT>
             </COMP>
+            <COMP relation="ConstraintDefinition">
+              <OBJECT>
+                <ID name="Server Port = 5511" mc="Standard.Constraint" uid="3eaaf1da-7b94-43fb-8f42-e07f2c14c082"/>
+                <ATTRIBUTES>
+                  <ATT name="BaseClass"></ATT>
+                  <ATT name="Body"></ATT>
+                  <ATT name="Language"></ATT>
+                  <ATT name="Name"><![CDATA[Server Port = 5511]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>

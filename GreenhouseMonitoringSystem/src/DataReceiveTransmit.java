@@ -12,7 +12,7 @@ import org.json.*;
  * USB serial port which receives data from the Arduino. It uses the communication protocol as defined in the design
  * document to send the data to the server.
  * 
- * @author Danilo Vucetic
+ * @author Danilo Vucetic and Jacob Martin
  *
  */
 public class DataReceiveTransmit implements Runnable{
@@ -21,7 +21,6 @@ public class DataReceiveTransmit implements Runnable{
 	private int serverPort;
 	private InetAddress serverIP;
 	private DatagramSocket socket;
-	private JSONObject tempJSON;
 	
 	private int numUnreciprocated = 0;
 	private boolean underTest;
@@ -46,17 +45,19 @@ public class DataReceiveTransmit implements Runnable{
 	public void run() {
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
 		struct.print();
-		int updateNum = 1;
 		TwoWaySerialComm serialPort = new TwoWaySerialComm();
 	    new Thread(serialPort).start();
+	    JSONObject tempJSON = null;
 		while(true){
 			
+			//FIXME: JACOB add the functionality where if there are 3 invalid reads in a row, we send an error message!
 			if(!underTest){
 				//check the serial port. 
 				try{
 				        try {
 					    //only want to update the data every 2 or so seconds. This is because the arduino can only pull
-					    //new data every 2 seconds so there is no point in polling more than that.
+					    //new data every 2 seconds so there is no point in polling more than that. This also means that this thread
+				        //isn't hogging clock cycles by constantly polling. 
 					     Thread.sleep(2000);
 				        } catch (InterruptedException e) {
 					     e.printStackTrace();
@@ -66,6 +67,7 @@ public class DataReceiveTransmit implements Runnable{
 					struct.setTemperature((float)Float.parseFloat(tempJSON.getString("temperature")));
 					//struct.setJSON(tempJSON);
 				}catch (Exception e) {
+					//FIXME: there should be error handling here
 					System.out.println("Error: not reading serial data"+ e);
 				}
 			}else{
@@ -81,11 +83,12 @@ public class DataReceiveTransmit implements Runnable{
 			
 			//update the server
 			try {
-				updateServer(struct.getJSON());
+				updateServer(struct.getJSON().toString());
 			} catch (JSONException e) {
 				e.printStackTrace();
+				//FIXME: JACOB there should be some type of error message being sent here?
+				//JSON invalid format.
 			}
-			updateNum++;
 		}
 		
 	}
@@ -94,10 +97,10 @@ public class DataReceiveTransmit implements Runnable{
 	 * This method sends the JSON to the server using the communications protocol defined in the design
 	 * @param JSON
 	 */
-	private void updateServer(JSONObject JSON){
+	private void updateServer(String JSON){
 		
 		//Send the data to the server and wait for a response
-		byte[] data = CreateGreenhouseMessage.data(JSON.toString());
+		byte[] data = CreateGreenhouseMessage.data(JSON);
 		DatagramPacket packet = new DatagramPacket(data, data.length);
 		try{
 			socket.connect(serverIP, serverPort);

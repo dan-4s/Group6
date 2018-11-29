@@ -16,6 +16,7 @@
       <COMP relation="OwnedBehavior">
         <COMPID name="Interaction" mc="Standard.Interaction" uid="6d859988-8850-42d9-abf5-15d9ad5d063a"/>
         <COMPID name="State Machine" mc="Standard.StateMachine" uid="ef75e7ae-6986-4f25-9941-1457bf959882"/>
+        <COMPID name="Interaction1" mc="Standard.Interaction" uid="5830cc23-2184-4435-bbba-02b100441ca3"/>
       </COMP>
       <COMP relation="Declared">
         <OBJECT>
@@ -210,6 +211,25 @@
                     <REFOBJ>
                       <ID name="port" mc="Standard.ConnectorEnd" uid="abeb7d6d-82aa-442a-aa84-c066c8fd98cc"/>
                     </REFOBJ>
+                    <REFOBJ>
+                      <ID name="port" mc="Standard.ConnectorEnd" uid="1961362f-f8a1-4d01-a6cf-c7f4b8d84d30"/>
+                    </REFOBJ>
+                    <REFOBJ>
+                      <ID name="port" mc="Standard.ConnectorEnd" uid="f2f00831-1221-447d-800c-ca3eeaef9e10"/>
+                    </REFOBJ>
+                  </COMP>
+                  <COMP relation="ConstraintDefinition">
+                    <OBJECT>
+                      <ID name="Data Port" mc="Standard.Constraint" uid="f0a9f730-1dd2-4e4b-ba1c-2c4d00f044fb"/>
+                      <ATTRIBUTES>
+                        <ATT name="BaseClass"></ATT>
+                        <ATT name="Body"></ATT>
+                        <ATT name="Language"></ATT>
+                        <ATT name="Name"><![CDATA[Data Port]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
                   </COMP>
                 </DEPENDENCIES>
               </OBJECT>
@@ -368,6 +388,22 @@
                         </COMP>
                       </DEPENDENCIES>
                     </OBJECT>
+                    <REFOBJ>
+                      <ID name="port" mc="Standard.ConnectorEnd" uid="2f5183c2-9553-42ec-bf84-b50f72027ffe"/>
+                    </REFOBJ>
+                  </COMP>
+                  <COMP relation="ConstraintDefinition">
+                    <OBJECT>
+                      <ID name="Command Port = 5510" mc="Standard.Constraint" uid="95bb63d3-fb69-4670-bd59-231b800aa33b"/>
+                      <ATTRIBUTES>
+                        <ATT name="BaseClass"></ATT>
+                        <ATT name="Body"></ATT>
+                        <ATT name="Language"></ATT>
+                        <ATT name="Name"><![CDATA[Command Port = 5510]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
                   </COMP>
                 </DEPENDENCIES>
               </OBJECT>
@@ -476,6 +512,11 @@
             </COMP>
           </DEPENDENCIES>
         </OBJECT>
+        <COMPID name="InetAddress" mc="Standard.Class" uid="a11b0455-41a6-4910-92ee-2aa5748705fa"/>
+        <COMPID name="DatagramSocket" mc="Standard.Class" uid="efa67242-13f6-4bf8-ba1e-34003ffea2c9"/>
+        <COMPID name="DatagramPacket" mc="Standard.Class" uid="3266332b-d15a-4267-be3f-85cda856d1cf"/>
+        <COMPID name="JSONObject" mc="Standard.Class" uid="a8988ff3-7ddf-4dc4-ade8-76d6246dcd55"/>
+        <COMPID name="TwoWaySerialComm" mc="Standard.Class" uid="d2a9a5da-06f7-4fbc-97b7-28faaaf3d886"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="sysc3010 Deployment diagram" mc="Standard.DeploymentDiagram" uid="67ca1175-27ac-4213-8c39-3e9ef27080e7"/>

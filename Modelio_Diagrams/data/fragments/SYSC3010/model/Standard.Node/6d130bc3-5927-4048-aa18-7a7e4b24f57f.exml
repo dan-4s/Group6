@@ -42,9 +42,9 @@
                 <DEPENDENCIES>
                   <COMP relation="Link">
                     <OBJECT>
-                      <ID name="Database Protocol" mc="Standard.Connector" uid="16f375ae-3886-4562-bac1-f020aff01bf4"/>
+                      <ID name="REST API" mc="Standard.Connector" uid="16f375ae-3886-4562-bac1-f020aff01bf4"/>
                       <ATTRIBUTES>
-                        <ATT name="Name"><![CDATA[Database Protocol]]></ATT>
+                        <ATT name="Name"><![CDATA[REST API]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
                       </ATTRIBUTES>
                       <DEPENDENCIES></DEPENDENCIES>
@@ -68,7 +68,7 @@
                       </ATTRIBUTES>
                       <DEPENDENCIES>
                         <COMP relation="Link">
-                          <COMPID name="Database Protocol" mc="Standard.Connector" uid="16f375ae-3886-4562-bac1-f020aff01bf4"/>
+                          <COMPID name="REST API" mc="Standard.Connector" uid="16f375ae-3886-4562-bac1-f020aff01bf4"/>
                         </COMP>
                         <LINK relation="Target">
                           <REFOBJ>
@@ -85,6 +85,9 @@
               </OBJECT>
               <REFOBJ>
                 <ID name="" mc="Standard.ConnectorEnd" uid="45d791c4-ba8a-4fa7-9e35-b4d2290aea0f"/>
+              </REFOBJ>
+              <REFOBJ>
+                <ID name="" mc="Standard.ConnectorEnd" uid="0cb2fd87-6824-4e72-872e-58ee73670138"/>
               </REFOBJ>
             </COMP>
           </DEPENDENCIES>
@@ -118,9 +121,9 @@
                 <DEPENDENCIES>
                   <COMP relation="Link">
                     <OBJECT>
-                      <ID name="Databse Protocol" mc="Standard.Connector" uid="c9e53557-e380-414b-a8ae-ff08aa6efc96"/>
+                      <ID name="Websocket" mc="Standard.Connector" uid="c9e53557-e380-414b-a8ae-ff08aa6efc96"/>
                       <ATTRIBUTES>
-                        <ATT name="Name"><![CDATA[Databse Protocol]]></ATT>
+                        <ATT name="Name"><![CDATA[Websocket]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
                       </ATTRIBUTES>
                       <DEPENDENCIES></DEPENDENCIES>
@@ -144,7 +147,7 @@
                       </ATTRIBUTES>
                       <DEPENDENCIES>
                         <COMP relation="Link">
-                          <COMPID name="Databse Protocol" mc="Standard.Connector" uid="c9e53557-e380-414b-a8ae-ff08aa6efc96"/>
+                          <COMPID name="Websocket" mc="Standard.Connector" uid="c9e53557-e380-414b-a8ae-ff08aa6efc96"/>
                         </COMP>
                         <LINK relation="Target">
                           <REFOBJ>
@@ -161,6 +164,9 @@
               </OBJECT>
               <REFOBJ>
                 <ID name="" mc="Standard.ConnectorEnd" uid="19da9545-bf93-456a-8390-4f96f37d75d9"/>
+              </REFOBJ>
+              <REFOBJ>
+                <ID name="" mc="Standard.ConnectorEnd" uid="84c2d267-cf02-46fc-b9a6-e964de305c7c"/>
               </REFOBJ>
             </COMP>
           </DEPENDENCIES>
