@@ -9,7 +9,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.URL;
 import java.util.Arrays;
-
+import org.json.*;
 
 
 /**
@@ -25,9 +25,9 @@ public class GreenhouseManagement {
 	private static int commandUnreciprocated = 0; //keeps track of the number of unreciprocated commands. 
 	private static boolean currentFanStatus = false;
 	
-	private static String commandURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Button";
-	private static String databaseURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/sensorData/Sensor1";
-	private static String errorURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Errors";
+	private static String commandURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Button.json";
+	private static String databaseURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/sensorData/Sensor1.json";
+	private static String errorURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Errors.json";
 
 	
 	private static DatagramSocket socket;
@@ -95,8 +95,10 @@ public class GreenhouseManagement {
 			
 			
 			Boolean newFanSTAT = pullFromDatabase();
+			System.out.println("newFanSTAT = " + newFanSTAT);
 			if(newFanSTAT == null){
 				//error has occured
+			        System.out.println("newFanSTAT = " + newFanSTAT);
 				sendErrorToDatabase("Command could not be recognized and/or read by SP");
 			}else if(newFanSTAT != currentFanStatus){
 				//send a command packet to change the fan status. 
@@ -167,9 +169,14 @@ public class GreenhouseManagement {
 				StringBuffer response = new StringBuffer();
 				while ((inputLine = in.readLine()) != null) {
 					response.append(inputLine);//append all data
+					System.out.println("RESPOSE BUTTON: " + inputLine);
+					JSONObject tempJSON = new JSONObject(inputLine);
+					System.out.println("JSON: " + tempJSON);
+					return tempJSON.getBoolean("fanStatusNew");
 				}
 				in.close();
-				return Boolean.parseBoolean(response.toString()); //if we have data return itll return false
+			        
+				return null; //if we have data return itll return false
 			} else {
 				System.err.println("GET request failed");
 				return null;
