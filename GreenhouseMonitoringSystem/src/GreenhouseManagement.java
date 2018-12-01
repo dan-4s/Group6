@@ -25,9 +25,10 @@ public class GreenhouseManagement {
 	private static int commandUnreciprocated = 0; //keeps track of the number of unreciprocated commands. 
 	private static boolean currentFanStatus = false;
 	
-	//TODO: JACOB make sure these are correct!
-	private static String commandURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/sensorData/Sensor1";
+	private static String commandURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Button";
 	private static String databaseURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/sensorData/Sensor1";
+	private static String errorURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Errors";
+
 	
 	private static DatagramSocket socket;
 	
@@ -151,25 +152,24 @@ public class GreenhouseManagement {
 	 * This method checks the database for new commands. Returns the expected value of the fan.
 	 * @return the new / expected fan status from the database
 	 */
-	private static Boolean pullFromDatabase(){
-		//FIXME: JACOB comment these methods. 
+	private static Boolean pullFromDatabase(){ 
 		try {
 			//URL from which to fetch the command from the database
-			URL obj = new URL(commandURL);
+			URL obj = new URL(commandURL); //Connection URL
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-			con.setRequestMethod("GET");
+			con.setRequestMethod("GET"); //Request type
 			con.setRequestProperty("User-Agent", "Mozilla/5.0");
-			int responseCode = con.getResponseCode();
+			int responseCode = con.getResponseCode();//in case we dont get 200
 			System.out.println("GET Response Code :: " + responseCode);
 			if (responseCode == HttpURLConnection.HTTP_OK) { // success
-				BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));//decode response
 				String inputLine;
 				StringBuffer response = new StringBuffer();
 				while ((inputLine = in.readLine()) != null) {
-					response.append(inputLine);
+					response.append(inputLine);//append all data
 				}
 				in.close();
-				return Boolean.parseBoolean(response.toString());
+				return Boolean.parseBoolean(response.toString()); //if we have data return itll return false
 			} else {
 				System.err.println("GET request failed");
 				return null;
@@ -185,26 +185,26 @@ public class GreenhouseManagement {
 	 * @param JSON The data received from the GP
 	 */
 	private static void updateDatabase(String JSON){
-		//FIXME: JACOB comment these methods. 
 		try {
 			//get the URL for the database JSON
-			URL obj = new URL(databaseURL);
+			URL obj = new URL(databaseURL);// UrL location to pull from
 			
-			//open an http connection then update the database JSON
+			//open an https connection then update the database JSON
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-			con.setRequestMethod("PUT");
+			con.setRequestMethod("PUT");//set Request Method
 			con.setRequestProperty("User-Agent", "Mozilla/5.0");
 
-			// For POST only - START
+			// For PUT only - START
 			con.setDoOutput(true);
 			OutputStream os = con.getOutputStream();
-			os.write(JSON.getBytes());
-			os.flush();
-			os.close();
+			os.write(JSON.getBytes());//must encode data that we want to store due to https
+			os.flush(); //clear stream
+			os.close(); //close connection
 			// For POST only - END
-			int responseCode = con.getResponseCode();
+			int responseCode = con.getResponseCode();// in case response is not 200
 			System.out.println("POST Response Code :: " + responseCode);
 		}catch(Exception e) {
+
 			e.printStackTrace();
 		}
 	}
@@ -214,7 +214,26 @@ public class GreenhouseManagement {
 	 * @param errorMessage the error message which will be sent to the database
 	 */
 	private static void sendErrorToDatabase(String errorMessage){
-		//TODO: JACOB implement this functionality. I've already placed it in the code where needed. 
+		try {
+			//get the URL for the database JSON
+			URL obj = new URL(errorURL);// UrL location to pull from
+			//open an https connection then update the database JSON
+			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+			con.setRequestMethod("PUT");//set Request Method
+			con.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+			// For PUT only - START
+			con.setDoOutput(true);
+			OutputStream os = con.getOutputStream();
+			os.write(errorMessage.getBytes());//must encode data that we want to store due to https
+			os.flush(); //clear stream
+			os.close(); //close connection
+			// For POST only - END
+			int responseCode = con.getResponseCode();// in case response is not 200
+			System.out.println("POST Response Code :: " + responseCode);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

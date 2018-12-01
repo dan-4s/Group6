@@ -24,6 +24,7 @@ public class DataReceiveTransmit implements Runnable{
 	
 	private int numUnreciprocated = 0;
 	private boolean underTest;
+	private int numUnreciprocatedSerial = 0;
 	
 	private final int TIMEOUT_LENGTH = 500; //500ms timeout for sockets waiting on a packet.
 	private final int MAX_SIZE = 500;
@@ -49,8 +50,6 @@ public class DataReceiveTransmit implements Runnable{
 	    new Thread(serialPort).start();
 	    JSONObject tempJSON = null;
 		while(true){
-			
-			//FIXME: JACOB add the functionality where if there are 3 invalid reads in a row, we send an error message!
 			if(!underTest){
 				//check the serial port. 
 				try{
@@ -67,8 +66,13 @@ public class DataReceiveTransmit implements Runnable{
 					struct.setTemperature((float)Float.parseFloat(tempJSON.getString("temperature")));
 					//struct.setJSON(tempJSON);
 				}catch (Exception e) {
-					//FIXME: there should be error handling here
-					System.out.println("Error: not reading serial data"+ e);
+					numUnreciprocatedSerial++;
+					System.err.println("DRT: Did not receive response from Sensor, this is unreciprocated response #: " + numUnreciprocatedSerial);
+					//Checking if the number of errors has been reached
+					if(numUnreciprocatedSerial >= 3){
+						sendErrorMessage("Due to " + numUnreciprocatedSerial + " unreciprocated packets. The Sensor might be off or not responding.");
+						numUnreciprocatedSerial = 0; //setting back to zero so that if there are 3 unreciprocated again we can send the error message again. 
+					}
 				}
 			}else{
 				//don't do anything.. this is the stub section..
@@ -80,14 +84,14 @@ public class DataReceiveTransmit implements Runnable{
 			}
 			
 			
-			
 			//update the server
 			try {
 				updateServer(struct.getJSON().toString());
 			} catch (JSONException e) {
 				e.printStackTrace();
-				//FIXME: JACOB there should be some type of error message being sent here?
 				//JSON invalid format.
+				//this will only be sent if we messed up the arduino code
+				sendErrorMessage("Something seriously went wrong if you are seeing this.");
 			}
 		}
 		

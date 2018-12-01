@@ -138,7 +138,7 @@ public class GreenHouseStubTest {
 		
 		assert(type.equals("DATA"));
 		//FIXME: update this to the JSON text!!!
-		assert(data.equals("Temp: " + temp + ";Humi: " + humd + "fanStatus: "  + fanStatus + "; This is update number: "));
+		assert(data.equals("Temprature: " + temp + ";Humidity: " + humd + "fanStatus: "  + fanStatus + "; This is update number: "));
 		
 	}
 	
