@@ -130,6 +130,7 @@ public class GreenHouseStubTest {
 				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
 				data = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-2));
 				System.out.println(data);
+				System.out.println("THis is recive data"+ data);
 				System.out.println("Received type: " + type + "; received data = " + data);
 				break;
 			}

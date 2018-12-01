@@ -16,42 +16,30 @@ class TwoWaySerialComm implements Runnable{
 	         String last="";
 	         String current;
 	         String temp = null;
-  
-     
-	        try {
-	            while (true)
+
+	         while (true)
 	            {
             	
                 while (comPort.bytesAvailable() == 0)
                     Thread.sleep(3000);
                 byte[] readBuffer = new byte[comPort.bytesAvailable()];
                 current = new String(readBuffer);
-                if(!current.equals(last))
-              	temp = new String(readBuffer);
-              	try{
-              		this.jsonObj = new JSONObject(temp);
-              		System.out.println("recived:   "+temp);
-                      last = current;
-              	}
-              	catch(Exception e){
-              		System.out.println(this.jsonObj);
-              	}
-                	
+                if(!current.equals(last)) {
+                	temp = new String(readBuffer);
+                	this.jsonObj = new JSONObject(temp);
+                  	System.out.println("recived:   "+temp);
+                    last = current;
+                }	 	
             }
-        } catch (Exception e) { 
-      	  e.printStackTrace(); 
-      	  }
-        comPort.closePort();
     	 }
         catch (ArrayIndexOutOfBoundsException exception) {
             // Output expected ArrayIndexOutOfBoundsException.
         	System.out.println("can not Read from serialPort: Most likely sensor not connected");
-        	exception.printStackTrace();
+        	//exception.printStackTrace();
         	return;
-        	
         } catch (Exception exception) {
             // Output unexpected Exceptions.
-        	exception.printStackTrace();
+        	//exception.printStackTrace();
         	return;
         	
         }
