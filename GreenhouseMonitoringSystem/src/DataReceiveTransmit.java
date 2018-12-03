@@ -61,13 +61,9 @@ public class DataReceiveTransmit implements Runnable{
 				        } catch (InterruptedException e) {
 					     e.printStackTrace();
 			          	}
-					System.out.println("CHECK 1");
 					tempJSON= serialPort.getSerialJSON();
-					System.out.println("CHECK 2");
 					struct.setRelativeHumidity((float)Float.parseFloat(tempJSON.getString("humidity")));
-					System.out.println("CHECK 3");
 					struct.setTemperature((float)Float.parseFloat(tempJSON.getString("temperature")));
-					System.out.println("CHECK 4");
 					//struct.setJSON(tempJSON);
 				}catch (Exception e) {
 				        e.printStackTrace();
