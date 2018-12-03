@@ -13,7 +13,7 @@ import java.net.UnknownHostException;
 public class GreenhouseMain {
 
 	public static void main (String []args){
-		boolean underTest = false;
+		boolean underTest = true;
 		InetAddress serverIP = null;
 		
 		

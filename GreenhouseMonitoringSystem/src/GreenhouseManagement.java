@@ -34,6 +34,7 @@ public class GreenhouseManagement {
 	
 	public static void main(String []args){
 		//set up the socket
+	
 		try {
 			socket = new DatagramSocket(serverPort);
 		} catch (SocketException e) {
@@ -44,6 +45,7 @@ public class GreenhouseManagement {
 		
 		while(true){
 			//receive message
+			sendErrorToDatabase("Command could not be recognized and/or read by SP");
 			byte[] buf = new byte[500];
 			DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
 			try{
@@ -169,9 +171,7 @@ public class GreenhouseManagement {
 				StringBuffer response = new StringBuffer();
 				while ((inputLine = in.readLine()) != null) {
 					response.append(inputLine);//append all data
-					System.out.println("RESPOSE BUTTON: " + inputLine);
 					JSONObject tempJSON = new JSONObject(inputLine);
-					System.out.println("JSON: " + tempJSON);
 					return tempJSON.getBoolean("fanStatusNew");
 				}
 				in.close();
@@ -222,17 +222,19 @@ public class GreenhouseManagement {
 	 */
 	private static void sendErrorToDatabase(String errorMessage){
 		try {
+			JSONObject json = new JSONObject();
+			json.put("error", errorMessage);
 			//get the URL for the database JSON
 			URL obj = new URL(errorURL);// UrL location to pull from
 			//open an https connection then update the database JSON
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 			con.setRequestMethod("PUT");//set Request Method
 			con.setRequestProperty("User-Agent", "Mozilla/5.0");
-
+			System.out.println("we Tried sending an error");
 			// For PUT only - START
 			con.setDoOutput(true);
 			OutputStream os = con.getOutputStream();
-			os.write(errorMessage.getBytes());//must encode data that we want to store due to https
+			os.write(json.toString().getBytes());//must encode data that we want to store due to https
 			os.flush(); //clear stream
 			os.close(); //close connection
 			// For POST only - END
