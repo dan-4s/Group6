@@ -23,6 +23,14 @@ void setup() {
   Serial.begin(9600);
   //DHT setup
   dht.begin();
+
+  //LCD screen preparation 
+  LCD.clear();
+  LCD.setCursor(0,0);
+  LCD.write("T:");
+
+  LCD.write(" H:");
+  LCD.print(Humidity);
 }
 
 void loop() {
@@ -36,6 +44,7 @@ void loop() {
   Serial.print(Humidity);
   Serial.print("}");
 
+  //LCD 
   LCD.clear();
   LCD.setCursor(0,0);
   LCD.write("T:");
