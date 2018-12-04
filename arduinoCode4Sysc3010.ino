@@ -23,14 +23,16 @@ void setup() {
   Serial.begin(9600);
   //DHT setup
   dht.begin();
+  sleep(1000);
 
   //LCD screen preparation 
   LCD.clear();
+  //Initialize the cursor at the point to write the tempereture
   LCD.setCursor(0,0);
   LCD.write("T:");
-
+  //Move the cursor 7 points,2 for the word above, 4 spaces for temp reading, 1 space for spacing
+  LCD.setCursor(4,0);
   LCD.write(" H:");
-  LCD.print(Humidity);
 }
 
 void loop() {
