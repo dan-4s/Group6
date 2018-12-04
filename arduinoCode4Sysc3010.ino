@@ -33,6 +33,9 @@ void setup() {
   //Move the cursor 7 points,2 for the word above, 4 spaces for temp reading, 1 space for spacing
   LCD.setCursor(4,0);
   LCD.write(" H:");
+  //Move the cursor down the secod row of the lcd to print the data counter
+  LCD.setCursor(0,1);
+  LCD.write("W.R.T.C: ");
 }
 
 void loop() {
@@ -47,7 +50,6 @@ void loop() {
   Serial.print("}");
 
   //LCD 
-  LCD.clear();
   LCD.setCursor(0,0);
   LCD.write("T:");
   LCD.print(Temp);
