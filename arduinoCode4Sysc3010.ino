@@ -58,7 +58,13 @@ void loop() {
     LCD.setCursor(2,0);
     LCD.print(Temp);
   }
-
+  //write the humidity to the LCD
+  //writing to LCD consumes some considerable amount of power so only write when we have changes
+  if(!(Humidity==HumudityPrev)
+  {
+    LCD.setCursor(9,0);
+    LCD.print(Humidity);
+  }
 
   LCD.setCursor(0,1);
   LCD.write("W.R.T.C: ");
