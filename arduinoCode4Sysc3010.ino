@@ -67,6 +67,6 @@ void loop() {
   }
 
 //update the number of data points
-  LCD.setCursor(0,1);
+  LCD.setCursor(9,1);
   LCD.print(write_counter);
 }
