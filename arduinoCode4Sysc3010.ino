@@ -66,7 +66,7 @@ void loop() {
     LCD.print(Humidity);
   }
 
+//update the number of data points
   LCD.setCursor(0,1);
-  LCD.write("W.R.T.C: ");
-  LCD.print(write_counter+1);
+  LCD.print(write_counter);
 }
