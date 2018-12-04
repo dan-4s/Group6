@@ -516,7 +516,8 @@
         <COMPID name="DatagramSocket" mc="Standard.Class" uid="efa67242-13f6-4bf8-ba1e-34003ffea2c9"/>
         <COMPID name="DatagramPacket" mc="Standard.Class" uid="3266332b-d15a-4267-be3f-85cda856d1cf"/>
         <COMPID name="JSONObject" mc="Standard.Class" uid="a8988ff3-7ddf-4dc4-ade8-76d6246dcd55"/>
-        <COMPID name="TwoWaySerialComm" mc="Standard.Class" uid="d2a9a5da-06f7-4fbc-97b7-28faaaf3d886"/>
+        <COMPID name="SerialPort" mc="Standard.Class" uid="d2a9a5da-06f7-4fbc-97b7-28faaaf3d886"/>
+        <COMPID name="JSONObject" mc="Standard.Class" uid="d10eaf13-9a6d-4e26-8302-70ffd70a03c3"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="sysc3010 Deployment diagram" mc="Standard.DeploymentDiagram" uid="67ca1175-27ac-4213-8c39-3e9ef27080e7"/>

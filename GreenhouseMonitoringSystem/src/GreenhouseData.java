@@ -7,8 +7,6 @@ import org.json.*;
  * @author Danilo Vucetic
  *
  */
-
-
 public class GreenhouseData {
 	//The state variables of the greenhouse
 	private float temperature;

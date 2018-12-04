@@ -25,16 +25,15 @@ public class GreenhouseManagement {
 	private static int commandUnreciprocated = 0; //keeps track of the number of unreciprocated commands. 
 	private static boolean currentFanStatus = false;
 	
+	//The URL's required to access the database
 	private static String commandURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Button.json";
 	private static String databaseURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/sensorData/Sensor1.json";
 	private static String errorURL = "https://greenhousedata-cef98.firebaseio.com/users/TFSInAIyjZasPfyanDjsveMmdRH2/greenHouses/-LO6EC8taWQp_X6WGnS1/Errors.json";
 
-	
 	private static DatagramSocket socket;
 	
 	public static void main(String []args){
 		//set up the socket
-	
 		try {
 			socket = new DatagramSocket(serverPort);
 		} catch (SocketException e) {
@@ -45,7 +44,6 @@ public class GreenhouseManagement {
 		
 		while(true){
 			//receive message
-			sendErrorToDatabase("Command could not be recognized and/or read by SP");
 			byte[] buf = new byte[500];
 			DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
 			try{
@@ -78,6 +76,7 @@ public class GreenhouseManagement {
 				commandUnreciprocated = 0;
 				continue;
 			}else if(type.equals("DATA")){
+				//Printing data to console for debugging and logging purposes
 				System.out.println("DATA received: " + CreateGreenhouseMessage.dataDecode(recData));
 				updateDatabase(CreateGreenhouseMessage.dataDecode(recData));
 				acknowledge(receivePacket.getPort(), receivePacket.getAddress(), CreateGreenhouseMessage.MessageType.DATA);
@@ -95,16 +94,15 @@ public class GreenhouseManagement {
 				sendErrorToDatabase("Command packet has not been reciprocated!");
 			}
 			
-			
+			/* The following code send commands to the GP only if the fan status pulled from the database (aka the newFanStatus)
+			   differs from the current fan status. This prevents unnecessary command packets from being sent to the GP command thread. */
 			Boolean newFanSTAT = pullFromDatabase();
-			System.out.println("newFanSTAT = " + newFanSTAT);
+			System.out.println("newFanSTAT = " + newFanSTAT); //logging the new command
 			if(newFanSTAT == null){
-				//error has occured
-			        System.out.println("newFanSTAT = " + newFanSTAT);
 				sendErrorToDatabase("Command could not be recognized and/or read by SP");
 			}else if(newFanSTAT != currentFanStatus){
 				//send a command packet to change the fan status. 
-				System.out.println("sending command! port = " + commandPort);
+				System.out.println("sending command! port = " + commandPort); //logging the command
 				sendCommand(commandPort, receivePacket.getAddress(), newFanSTAT);
 			}
 		}
@@ -127,6 +125,7 @@ public class GreenhouseManagement {
 		} catch (IOException io) {
 			io.printStackTrace();
 			//This type of exception means that the system was unable to connect to the GP
+			sendErrorToDatabase("Connection between GP and SP failed!");
 		}
 	}
 	
@@ -148,6 +147,7 @@ public class GreenhouseManagement {
 		} catch (IOException io) {
 			io.printStackTrace();
 			//This type of exception means that the system was unable to connect to the GP 
+			sendErrorToDatabase("Unable to connect to the GP to send a command!");
 		}
 		commandUnreciprocated++;
 	}
@@ -182,7 +182,7 @@ public class GreenhouseManagement {
 				return null;
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			sendErrorToDatabase("Failed to pull command from database");
 		}
 		return null;
 	}
@@ -211,8 +211,8 @@ public class GreenhouseManagement {
 			int responseCode = con.getResponseCode();// in case response is not 200
 			System.out.println("POST Response Code :: " + responseCode);
 		}catch(Exception e) {
-
-			e.printStackTrace();
+			sendErrorToDatabase("SP unable to update database");
+			System.err.println("SP unable to update database");
 		}
 	}
 	
@@ -241,9 +241,7 @@ public class GreenhouseManagement {
 			int responseCode = con.getResponseCode();// in case response is not 200
 			System.out.println("POST Response Code :: " + responseCode);
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.err.println("Was unable to send error message to server!");
 		}
 	}
-	
-	
 }

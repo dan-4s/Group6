@@ -5,19 +5,6 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.Arrays;
 
-//TODO: remove if we are not using!
-//FOR GPIO ACCESS
-//import com.pi4j.io.gpio.GpioController;
-//import com.pi4j.io.gpio.GpioFactory;
-//import com.pi4j.io.gpio.GpioPinDigitalOutput;
-//import com.pi4j.io.gpio.PinState;
-//import com.pi4j.io.gpio.RaspiPin;
-
-//final GpioController gpio = GpioFactory.getInstance();
-//final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MOTOR",PinState.HIGH);
-
-
-
 /**
  * This Class implements Runnable and so may be run as a separate thread. Each thread is responsible for listening to a 
  * port which receives commands, and executing the command. It uses the communication protocol as defined in the design
@@ -26,12 +13,9 @@ import java.util.Arrays;
  * @author Danilo Vucetic and Jacob Martin
  *
  */
-
-
 public class CommandReceiveExecute implements Runnable{
 
 	private GreenhouseData struct;
-	private int commandReceivePort;
 	private int serverPort;
 	private InetAddress serverIP;
 	private DatagramSocket socket;
@@ -39,7 +23,6 @@ public class CommandReceiveExecute implements Runnable{
 	
 	public CommandReceiveExecute(GreenhouseData grd, int commandReceivePort, int serverPort, InetAddress serverIP, boolean underTest){
 		struct = grd;
-		this.commandReceivePort = commandReceivePort;
 		this.serverPort = serverPort;
 		this.serverIP = serverIP;
 		try {
@@ -52,21 +35,24 @@ public class CommandReceiveExecute implements Runnable{
 	}
 	
 	public void run() {
+		//Logging print statement
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
-		struct.print();
 		
-		//command wait loop:
+		//command wait loop: This essentially waits for a packet to come in. When a packet arrives, it attempts to decode and execute the command.
 		while(true){
+			//receive a packet. 
 			byte[] rBuf = new byte[500];
 			DatagramPacket receivePacket = new DatagramPacket(rBuf, rBuf.length);
 			try{
-				System.out.println("CRE: waiting for a packet !!!");
+				System.out.println("CRE: waiting for a packe!!!");
 				socket.receive(receivePacket);
 			}catch(IOException ioe){
-				ioe.printStackTrace();
+				//This error means that we were unable to connect to the SP, so we will exit the program
+				System.err.println("unable to connect to the SP, exiting the program!");
 				System.exit(1);
 			}
 			
+			//decoding the packet for the new fan status / the command. 
 			Boolean newFanStatus = null;
 			try{
 				byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
@@ -78,6 +64,7 @@ public class CommandReceiveExecute implements Runnable{
 			}
 			
 			if(newFanStatus == null){
+				//This is an error in decoding the packet. 
 				sendErrorMessage("Fan status NULL, unacceptable state. Make sure the data is in correct form.");
 				continue;
 			}
@@ -99,9 +86,11 @@ public class CommandReceiveExecute implements Runnable{
 		}
 	}
 
+	/**
+	 * This method turns the fan on by setting a GPIO pin high. Currently a stub since the fan was not implemented
+	 */
 	private void turnFanOn(){
 		if(!underTest){
-			//TODO: make sure this actually works!
 			//pin.high();
 
 		}else{
@@ -110,10 +99,11 @@ public class CommandReceiveExecute implements Runnable{
 		}
 	}
 	
-	
+	/**
+	 * This method turns the fan off by de-asserting a GPIO pin. Currently a stub since the fan was not implemented
+	 */
 	private void turnFanOff(){
 		if(!underTest){
-			//TODO: make sure this works
 			//pin.low();
 		}else{
 			//Here, since we know that we are under test, we should just change the value in the data structure but not actually attempt to access any hardware.. 

@@ -7,12 +7,14 @@ import java.net.SocketTimeoutException;
 import java.util.Arrays;
 import org.json.*;
 
+import com.fazecast.jSerialComm.SerialPort;
+
 /**
  * This Class implements Runnable and so may be run as a separate thread. Each thread is responsible for listening to a 
  * USB serial port which receives data from the Arduino. It uses the communication protocol as defined in the design
  * document to send the data to the server.
  * 
- * @author Danilo Vucetic and Jacob Martin
+ * @author Danilo Vucetic
  *
  */
 public class DataReceiveTransmit implements Runnable{
@@ -24,7 +26,6 @@ public class DataReceiveTransmit implements Runnable{
 	
 	private int numUnreciprocated = 0;
 	private boolean underTest;
-	private int numUnreciprocatedSerial = 0;
 	
 	private final int TIMEOUT_LENGTH = 500; //500ms timeout for sockets waiting on a packet.
 	private final int MAX_SIZE = 500;
@@ -38,6 +39,7 @@ public class DataReceiveTransmit implements Runnable{
 			socket.setSoTimeout(TIMEOUT_LENGTH);
 		} catch (SocketException socketEx) {
 			socketEx.printStackTrace();
+			//since we can't connect to the device, exit the program.
 			System.exit(1);
 		}
 		this.underTest = underTest;
@@ -46,33 +48,33 @@ public class DataReceiveTransmit implements Runnable{
 	public void run() {
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
 		struct.print();
-		TwoWaySerialComm serialPort = new TwoWaySerialComm();
-	    new Thread(serialPort).start();
-	    JSONObject tempJSON = null;
+		
+		//Setting up the serial port and setting a 2 second timeout. If 3 timeouts occur in a row with no new data we send an error packet. 
+		SerialPort comPort = SerialPort.getCommPorts()[0];
+		comPort.openPort();
+		comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 2000, 0); //setting a 2 second time limit
+	    
+		JSONObject tempJSON = null;
+		int numUnreciprocatedSerial = 0;
 		while(true){
 			if(!underTest){
 				//check the serial port. 
 				try{
-				        try {
-					    //only want to update the data every 2 or so seconds. This is because the arduino can only pull
-					    //new data every 2 seconds so there is no point in polling more than that. This also means that this thread
-				        //isn't hogging clock cycles by constantly polling. 
-					     Thread.sleep(2000);
-				        } catch (InterruptedException e) {
-					     e.printStackTrace();
-			          	}
-					tempJSON= serialPort.getSerialJSON();
+					//Try to read from the serial port. If successful, then extract the JSON and set the humidity and temperature. 
+					byte[] readBuffer = new byte[1024];
+				    int numRead = comPort.readBytes(readBuffer, readBuffer.length);
+				    tempJSON = new JSONObject(new String(Arrays.copyOfRange(readBuffer, 0, numRead)));
+				    
+				    //updating GreenhouseData with correct new data.
 					struct.setRelativeHumidity((float)Float.parseFloat(tempJSON.getString("humidity")));
 					struct.setTemperature((float)Float.parseFloat(tempJSON.getString("temperature")));
-					//struct.setJSON(tempJSON);
 				}catch (Exception e) {
-				        e.printStackTrace();
 					numUnreciprocatedSerial++;
-					System.err.println("DRT: Did not receive response from Sensor, this is unreciprocated response #: " + numUnreciprocatedSerial);
+					System.err.println("DRT: Did not receive response from Sensor, this is failed read#: " + numUnreciprocatedSerial);
 					//Checking if the number of errors has been reached
 					if(numUnreciprocatedSerial >= 3){
-						sendErrorMessage("Due to " + numUnreciprocatedSerial + " unreciprocated packets. The Sensor might be off or not responding.");
-						numUnreciprocatedSerial = 0; //setting back to zero so that if there are 3 unreciprocated again we can send the error message again. 
+						sendErrorMessage("Due to " + numUnreciprocatedSerial + " failed serial reads, the sensor module might be off or not responding.");
+						numUnreciprocatedSerial = 0;
 					}
 				}
 			}else{
@@ -84,23 +86,19 @@ public class DataReceiveTransmit implements Runnable{
 				}
 			}
 			
-			
 			//update the server
 			try {
 				updateServer(struct.getJSON().toString());
 			} catch (JSONException e) {
-				e.printStackTrace();
 				//JSON invalid format.
-				//this will only be sent if we messed up the arduino code
-				sendErrorMessage("Something seriously went wrong if you are seeing this.");
+				sendErrorMessage("JSON formatting error from Arduino!");
 			}
 		}
-		
 	}
 
 	/**
 	 * This method sends the JSON to the server using the communications protocol defined in the design
-	 * @param JSON
+	 * @param JSON 
 	 */
 	private void updateServer(String JSON){
 		
