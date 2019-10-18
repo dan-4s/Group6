@@ -5,6 +5,9 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.Arrays;
+import org.json.*;
+
+import com.fazecast.jSerialComm.SerialPort;
 
 /**
  * This Class implements Runnable and so may be run as a separate thread. Each thread is responsible for listening to a 
@@ -36,6 +39,7 @@ public class DataReceiveTransmit implements Runnable{
 			socket.setSoTimeout(TIMEOUT_LENGTH);
 		} catch (SocketException socketEx) {
 			socketEx.printStackTrace();
+			//since we can't connect to the device, exit the program.
 			System.exit(1);
 		}
 		this.underTest = underTest;
@@ -44,34 +48,57 @@ public class DataReceiveTransmit implements Runnable{
 	public void run() {
 		System.out.println("This thread is working: " + Thread.currentThread().getName());
 		struct.print();
-		int updateNum = 1;
+		
+		//Setting up the serial port and setting a 2 second timeout. If 3 timeouts occur in a row with no new data we send an error packet. 
+		SerialPort comPort = SerialPort.getCommPorts()[0];
+		comPort.openPort();
+		comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 2000, 0); //setting a 2 second time limit
+	    
+		JSONObject tempJSON = null;
+		int numUnreciprocatedSerial = 0;
 		while(true){
-			
 			if(!underTest){
 				//check the serial port. 
+				try{
+					//Try to read from the serial port. If successful, then extract the JSON and set the humidity and temperature. 
+					byte[] readBuffer = new byte[1024];
+				    int numRead = comPort.readBytes(readBuffer, readBuffer.length);
+				    tempJSON = new JSONObject(new String(Arrays.copyOfRange(readBuffer, 0, numRead)));
+				    
+				    //updating GreenhouseData with correct new data.
+					struct.setRelativeHumidity((float)Float.parseFloat(tempJSON.getString("humidity")));
+					struct.setTemperature((float)Float.parseFloat(tempJSON.getString("temperature")));
+				}catch (Exception e) {
+					numUnreciprocatedSerial++;
+					System.err.println("DRT: Did not receive response from Sensor, this is failed read#: " + numUnreciprocatedSerial);
+					//Checking if the number of errors has been reached
+					if(numUnreciprocatedSerial >= 3){
+						sendErrorMessage("Due to " + numUnreciprocatedSerial + " failed serial reads, the sensor module might be off or not responding.");
+						numUnreciprocatedSerial = 0;
+					}
+				}
 			}else{
 				//don't do anything.. this is the stub section..
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 			
-			
-			
 			//update the server
-			//TODO: update this to the JSON text!!
-			updateServer("Temp: " + struct.getTemperature() + ";Humi: " + struct.getRelativeHumidity() + "fanStatus: "  + struct.getFanActive() + "; This is update number: " + updateNum);
-			updateNum++;
+			try {
+				updateServer(struct.getJSON().toString());
+			} catch (JSONException e) {
+				//JSON invalid format.
+				sendErrorMessage("JSON formatting error from Arduino!");
+			}
 		}
-		
 	}
 
 	/**
 	 * This method sends the JSON to the server using the communications protocol defined in the design
-	 * @param JSON
+	 * @param JSON 
 	 */
 	private void updateServer(String JSON){
 		
@@ -98,14 +125,13 @@ public class DataReceiveTransmit implements Runnable{
 			//Checking if the number of errors has been reached
 			if(numUnreciprocated >= 3){
 				sendErrorMessage("Due to " + numUnreciprocated + " unreciprocated packets. The Server might be off or not responding.");
-				numUnreciprocated = 0;
-				//System.err.println("DRT: exiting due to number of unreciprocated messages!");
-				//TODO: Do something here!!! Was doing :System.exit(1);, but that's a bit much!
+				numUnreciprocated = 0; //setting back to zero so that if there are 3 unreciprocated again we can send the error message again. 
 			}
 			return;
 		}catch(IOException ioe){
 			ioe.printStackTrace();
-			//TODO: is this actually acceptable???
+			//THIS means that there has been some error with the IP address, or the system is not connected via an ethernet cable. 
+			//No choice but to exit the program
 			System.exit(1);
 		}
 		

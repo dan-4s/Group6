@@ -40,15 +40,21 @@ public abstract class CreateGreenhouseMessage {
 		return ackBytes;
 	}
 	
+	/**
+	 * Decodes acknowledge packets
+	 * @param ack the byte array of the received packet
+	 * @return String of what was being acknowledged
+	 */
 	public static String acknowledgeDecode(byte[] ack){
+		int minLength = 4;
 		//check for error
 		if(ack == null){
 			return null;
 		}
-		if(ack.length < 5 || !( new String(Arrays.copyOfRange(ack, 0, 4))).equals("ACK\0") || ack[ack.length-1] != '\0'){
+		if(ack.length < minLength+1 || !( new String(Arrays.copyOfRange(ack, 0, minLength))).equals("ACK\0") || ack[ack.length-1] != '\0'){
 			return null;
 		}
-		String ackS = new String(Arrays.copyOfRange(ack, 4, ack.length-1));
+		String ackS = new String(Arrays.copyOfRange(ack, minLength, ack.length-1));
 		if(ackS.equals("COMMAND")){
 			return "COMMAND";
 		}else if(ackS.equals("DATA")){
@@ -71,15 +77,21 @@ public abstract class CreateGreenhouseMessage {
 		return dataBytes;
 	}
 	
+	/**
+	 * Decodes command packets
+	 * @param com the byte array of the packet
+	 * @return The new fan status
+	 */
 	public static Boolean commandDecode(byte[] com){
+		int minLength = 8;
 		//check for error
 		if(com == null){
 			return null;
 		}
-		if(com.length <= 9 || !( new String(Arrays.copyOfRange(com, 0, 8))).equals("COMMAND\0") || com[com.length-1] != '\0'){
+		if(com.length <= minLength+1 || !( new String(Arrays.copyOfRange(com, 0, minLength))).equals("COMMAND\0") || com[com.length-1] != '\0'){
 			return null;
 		}
-		String stringCom = new String(Arrays.copyOfRange(com, 8, com.length-1));
+		String stringCom = new String(Arrays.copyOfRange(com, minLength, com.length-1));
 		Boolean fanS = null;
 		if(stringCom.equals("true") || stringCom.equals("false")){
 			fanS = Boolean.parseBoolean(stringCom);
@@ -108,15 +120,16 @@ public abstract class CreateGreenhouseMessage {
 	 * @return data as a string
 	 */
 	public static String dataDecode(byte[] data){
+		int minLength = 5;
 		//check for error
 		if(data == null){
 			return null;
 		}
-		if(data.length < 6 || !( new String(Arrays.copyOfRange(data, 0, 5))).equals("DATA\0") || data[data.length-1] != '\0'){
+		if(data.length < minLength+1 || !( new String(Arrays.copyOfRange(data, 0, minLength))).equals("DATA\0") || data[data.length-1] != '\0'){
 			return null;
 		}
 		
-		String dataS = new String(Arrays.copyOfRange(data, 5, data.length-1));
+		String dataS = new String(Arrays.copyOfRange(data, minLength, data.length-1));
 		return dataS;
 	}
 	
@@ -134,16 +147,22 @@ public abstract class CreateGreenhouseMessage {
 		return errorBytes;
 	}
 	
+	/**
+	 * Decodes error packets
+	 * @param error the byte array of the error packet
+	 * @return The error in String form
+	 */
 	public static String errorDecode(byte[] error){
+		int minLength = 6;
 		//check for error in packet
 		if(error == null){
 			return null;
 		}
-		if(error.length < 7 || !( new String(Arrays.copyOfRange(error, 0, 6))).equals("ERROR\0") || error[error.length-1] != '\0'){
+		if(error.length < minLength+1 || !( new String(Arrays.copyOfRange(error, 0, minLength))).equals("ERROR\0") || error[error.length-1] != '\0'){
 			return null;
 		}
 		
-		String errorS = new String(Arrays.copyOfRange(error, 6, error.length-1));
+		String errorS = new String(Arrays.copyOfRange(error, minLength, error.length-1));
 		return errorS;
 	}
 	

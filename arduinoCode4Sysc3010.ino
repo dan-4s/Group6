@@ -11,8 +11,10 @@ DHT dht(DHTPIN, DHTTYPE);
 
 int write_counter = 0;
 
-float Temp =0;
-float Humidity =0;
+int Temp =0;
+int Humidity =0;
+int TempPrev =0;
+int HumidityPrev=0;
 
 void setup() {
   //LCD setup 
@@ -23,6 +25,19 @@ void setup() {
   Serial.begin(9600);
   //DHT setup
   dht.begin();
+  sleep(1000);
+
+  //LCD screen preparation 
+  LCD.clear();
+  //Initialize the cursor at the point to write the tempereture
+  LCD.setCursor(0,0);
+  LCD.write("T:");
+  //Move the cursor 6 points,2 for the word above, 4 spaces for temp reading
+  LCD.setCursor(5,0);
+  LCD.write(" H:");
+  //Move the cursor down the secod row of the lcd to print the data counter
+  LCD.setCursor(0,1);
+  LCD.write("W.R.T.C: ");
 }
 
 void loop() {
@@ -36,14 +51,22 @@ void loop() {
   Serial.print(Humidity);
   Serial.print("}");
 
-  LCD.clear();
-  LCD.setCursor(0,0);
-  LCD.write("T:");
-  LCD.print(Temp);
-  LCD.write(" H:");
-  LCD.print(Humidity);
+  //write the temperature to the LCD
+  //writing to LCD consumes some considerable amount of power so only write when we have changes
+  if(!(Temp==TempPrev)
+  {
+    LCD.setCursor(2,0);
+    LCD.print(Temp);
+  }
+  //write the humidity to the LCD
+  //writing to LCD consumes some considerable amount of power so only write when we have changes
+  if(!(Humidity==HumudityPrev)
+  {
+    LCD.setCursor(9,0);
+    LCD.print(Humidity);
+  }
 
-  LCD.setCursor(0,1);
-  LCD.write("W.R.T.C: ");
-  LCD.print(write_counter+1);
+//update the number of data points
+  LCD.setCursor(9,1);
+  LCD.print(write_counter);
 }

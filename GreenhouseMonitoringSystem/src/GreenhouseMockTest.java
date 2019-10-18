@@ -96,54 +96,6 @@ public class GreenhouseMockTest {
 		serverPort++;
 	}
 	
-//TODO:THis should be in Jacob's stub tests
-//	/**
-//	 * This test checks that data packets from the GP are correctly formatted
-//	 */
-//	@Test
-//	public void correctData(){
-//		//Start the threads that run in GreenhouseMain
-//		dataT.start();
-//		comT.start();
-//		
-//		//Receive a packet
-//		byte[] buf = new byte[500];
-//		DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
-//		
-//		//receive the data packet
-//		try{
-//			socket.receive(receivePacket);
-//			byte[] ackBuf = CreateGreenhouseMessage.acknowledge(CreateGreenhouseMessage.MessageType.DATA);
-//			DatagramPacket ack = new DatagramPacket(ackBuf, ackBuf.length);
-//			//immediately send ack
-//			socket.connect(localIP, receivePacket.getPort());
-//			socket.send(ack);
-//			socket.disconnect();
-//		}catch(IOException ioe){
-//			ioe.printStackTrace();
-//		}
-//		
-//		//now check the data packet for correctness:
-//		String type = null;
-//		String data = null;
-//		byte[] recData = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
-//		for(int n = 0; n < receivePacket.getLength(); n++){
-//			if(recData[n] == '\0'){
-//				//assuming that this is the first occurrence if null byte, then we know that the previous bytes are the string of type
-//				type = new String(Arrays.copyOfRange(receivePacket.getData(), 0, n));
-//				data = new String(Arrays.copyOfRange(receivePacket.getData(), n+1, receivePacket.getLength()-2));
-//				System.out.println("Received type: " + type + "; received data = " + data);
-//				break;
-//			}
-//		
-//		}
-//		
-//		assert(type.equals("DATA"));
-//		//TODO: update this to the JSON text!!!
-//		assert(data.equals("Temp: " + temp + ";Humi: " + humd + "fanStatus: "  + fanStatus + "; This is update number: "));
-//		
-//	}
-	
 	/**
 	 * In this test we are sending a good command with the same fan status. We should get an ack back and the next data packet should have the same fan status!
 	 */
@@ -242,7 +194,7 @@ public class GreenhouseMockTest {
 		}
 		
 		assert(type.equals("DATA"));
-		//TODO: update this to the JSON text!!!
+		//FIXME: update this to the JSON text!!!
 		assert(data.equals("Temp: " + temp + ";Humi: " + humd + "fanStatus: "  + fanStatus + "; This is update number: "));
 	}
 
@@ -345,7 +297,7 @@ public class GreenhouseMockTest {
 		}
 		
 		assert(type.equals("DATA"));
-		//TODO: update this to the JSON text!!!
+		//FIXME: update this to the JSON text!!!
 		assert(data.equals("Temp: " + temp + ";Humi: " + humd + "fanStatus: "  + !fanStatus + "; This is update number: "));
 	}
 	
